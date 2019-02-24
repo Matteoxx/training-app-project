@@ -1,7 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1>I'm working</h1>
+<div class="row">
+  <div class="col mx-auto">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input type="text" class="form-control" formControlName="username" required>
+        <input type="text" class="form-control" formControlName="password" required>
+        <ng-template>
+          <div>
+            <p>Nieprawidłowa nazwa użytkownika lub hasło</p>            
+          </div>
+        </ng-template>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Log in</button>
+      </form>
     </div>
-  </div>
 </div>
