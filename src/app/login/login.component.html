@@ -2,13 +2,14 @@
   <div class="col mx-auto">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <input type="text" class="form-control" formControlName="username" required>
-        <input type="text" class="form-control" formControlName="password" required>
+        <input type="password" class="form-control" formControlName="password" required>
         <ng-template>
           <div>
             <p>Nieprawidłowa nazwa użytkownika lub hasło</p>            
           </div>
         </ng-template>
-        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Log in</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Zaloguj się</button>
       </form>
+      {{loggedIn}}
     </div>
 </div>
