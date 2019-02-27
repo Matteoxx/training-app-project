@@ -25,11 +25,11 @@ export class LoginService {
     }
   ];
 
-  logIn(username: string, password: string){
-    for(let user of this.usersDatabase){
-      if( (user.username === username) && (user.password === password) ){
+  logIn(username: string, password: string) {
+    for (const user of this.usersDatabase) {
+      if ( (user.username === username) && (user.password === password) ) {
         this.loggedIn = true;
-        console.log("loggedin: ", this.loggedIn);
+        console.log('loggedin: ', this.loggedIn);
       }
     }
   }

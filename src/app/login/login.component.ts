@@ -16,14 +16,13 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-  
     this.loginForm = new FormGroup({
       'username': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.required)
-    })
+    });
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.loginForm.value);
     const username = this.loginForm.value['username'];
     const password = this.loginForm.value['password'];
