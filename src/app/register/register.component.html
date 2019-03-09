@@ -1,3 +1,26 @@
-<p>
-  register works!
-</p>
+<div class="row">
+  <div class="col mx-auto">
+ 
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="formHeader">
+            <h1>ZAREJESTRUJ SIĘ</h1>
+            <p>Wypełnij formularz, aby założyć konto</p>
+        </div>
+
+        <input type="text" class="form-control" formControlName="username" placeholder="Nazwa użytkownika" required><br>
+        <input type="email" class="form-control" formControlName="email" placeholder="Adres e-mail" required><br>
+        <input type="email" class="form-control" formControlName="repeatEmail" placeholder="Powtórz adres e-mail" required><br>
+        <input type="password" class="form-control" formControlName="pass" placeholder="Hasło" required><br>
+        <input type="password" class="form-control" formControlName="repPass" placeholder="Powtórz hasło" required>
+        <br>
+        <div>
+            <input type="checkbox" class="form-check-input" formControlName="rulesCheck" id="rulesCheck">
+            <label class="form-check-label" for="rulesCheck">
+                Akceptuję regulamin FitnessGoals
+            </label>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Załóż konto</button>
+      </form>
+    </div>
+</div>
