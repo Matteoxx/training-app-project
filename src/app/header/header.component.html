@@ -1,39 +1,64 @@
 <nav class="navbar navbar-dark bg-primary">
-  <div class="container-fluid">
+  
       <div class="navbar-header">
           <a routerLink="/" class="navbar-brand"><img src="assets/img/ic_launcher.png"> FitnessGoals</a>
       </div>
 
       <div>
-
+          <ul class="nav">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link text-white" routerLink="/login">Zaloguj się</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link text-white" routerLink="/register">Zarejestruj się</a>
+              </li>
+            </ul>
+      </div>
+    
+  
+      <div>
         <ul class="nav">
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/">Home</a>
+            <a class="nav-link text-white" routerLink="/">Artykuły sportowe</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/login">Zaloguj się</a>
+            <a class="nav-link text-white" routerLink="/">Plan treningowy</a>
           </li>
           <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/register">Zarejestruj się</a>
+            <a class="nav-link text-white" routerLink="/">Dieta</a>
           </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link text-white" routerLink="/">Sklep</a>
+          </li>
+          <li class="dropdown nav-item" appDropdown #tools="appDropdown">
+              <a style="cursor: pointer;" class="nav-link text-white" role="button">    
+                Narzędzia
+              </a>
+              <ul class="dropdown-menu" [ngClass]="{'show':tools.isOpen}">
+                <li><a style="cursor: pointer;">Kalkulator BMI</a></li>
+                <li><a style="cursor: pointer;">Zapotrzebowanie kaloryczne</a></li>
+              </ul>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link text-white" routerLink="/">Czat</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link text-white" routerLink="/">Opinie</a>
+          </li>
+
+          <li class="dropdown nav-item" appDropdown #r="appDropdown">
+              <a style="cursor: pointer; padding: 0; margin: 0;" class="nav-link text-white" role="button">    
+                <fa-icon [icon]="faUser"></fa-icon>
+              </a>
+              <ul class="dropdown-menu" [ngClass]="{'show':r.isOpen}">
+                <li><a style="cursor: pointer;">Historia Postępów</a></li>
+                <li><a style="cursor: pointer;">Pomiary</a></li>
+                <li><a style="cursor: pointer;">Ustawienia</a></li>
+                <li><a style="cursor: pointer;">Wyloguj</a></li>
+              </ul>
+          </li>
+          
         </ul>
-      
       </div>
-
-      <div>
-
-
-
-          <!-- <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown" appDropdown>
-                  <a class="dropdown-toggle" style="cursor: pointer;">cos <span class="caret"></span></a>
-              
-                  <ul class="dropdown-menu">
-                      <li><a style="cursor: pointer;">cos1</a></li>
-                      <li><a style="cursor: pointer;">cos2</a></li>
-                  </ul>                
-              </li>
-          </ul> -->
-      </div>
-  </div>   
+     
 </nav>

@@ -9,7 +9,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,16 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    DropdownDirective
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
