@@ -9,7 +9,6 @@ import { RegisterComponent } from './register/register.component';
 import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { DropdownDirective } from './shared/dropdown.directive';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -19,8 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HeaderComponent,
-    DropdownDirective
+    HeaderComponent
     
   ],
   imports: [

@@ -9,51 +9,52 @@
   </div>
 
   <div class="collapse navbar-collapse my-auto" id="navbarSupportedContent">
-    <ul class="navbar-nav mx-auto">
+    <ul class="navbar-nav mx-auto text-center text-white">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link text-white" routerLink="/">Artykuły sportowe</a>
+        <a class="nav-link" routerLink="/">Artykuły sportowe</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link text-white" routerLink="/">Plan treningowy</a>
+        <a class="nav-link" routerLink="/">Plan treningowy</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link text-white" routerLink="/">Dieta</a>
+        <a class="nav-link" routerLink="/">Dieta</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link text-white" routerLink="/">Sklep</a>
+        <a class="nav-link" routerLink="/">Sklep</a>
       </li>
-      <li class="dropdown nav-item" appDropdown #tools="appDropdown">
-        <a style="cursor: pointer;" class="nav-link text-white" role="button">    
+      <li class="dropdown nav-item">  
+        <a class="nav-link text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Narzędzia
         </a>
-        <ul class="dropdown-menu" [ngClass]="{'show':tools.isOpen}">
-          <li><a style="cursor: pointer;">Kalkulator BMI</a></li>
-          <li><a style="cursor: pointer;">Zapotrzebowanie kaloryczne</a></li>
-        </ul>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink="/">Kalkulator BMI</a>
+          <a class="dropdown-item" routerLink="/">Zapotrzebowanie kaloryczne</a>
+        </div>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link text-white" routerLink="/">Czat</a>
+        <a class="nav-link" routerLink="/">Czat</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link text-white" routerLink="/">Opinie</a>
-      </li>
-      <li class="dropdown nav-item" appDropdown #r="appDropdown">
-        <!-- <a style="cursor: pointer;" class="nav-link text-white my-auto" role="button">    
-          <fa-icon class="my-auto" [icon]="faUser"></fa-icon>
-        </a> -->
-        <ul class="dropdown-menu" [ngClass]="{'show':r.isOpen}">
-          <li><a style="cursor: pointer;">Historia Postepów</a></li>
-          <li><a style="cursor: pointer;">Pomiary</a></li>
-          <li><a style="cursor: pointer;">Ustawienia</a></li>
-          <li><a style="cursor: pointer;">Wyloguj</a></li>
-        </ul>
+        <a class="nav-link" routerLink="/">Opinie</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/login">Zaloguj się</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/register">Zarejestruj się</a>
+        <a class="nav-link text-white" routerLink="/login">Zaloguj się</a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-white" routerLink="/register">Zarejestruj się</a>
+      </li>
+      <li class="dropdown nav-item">  
+          <a class="nav-link dropdown-toggle text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <fa-icon [icon]="faUser"></fa-icon>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="/">Historia Postepów</a>
+            <a class="dropdown-item" routerLink="/">Pomiary</a>
+            <a class="dropdown-item" routerLink="/">Ustawienia</a>
+            <a class="dropdown-item" routerLink="/">Wyloguj</a>
+          </div>
+      </li>
+
     
     </ul>
   </div>
