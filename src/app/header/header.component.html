@@ -1,64 +1,60 @@
-<nav class="navbar navbar-dark bg-primary">
-  
-      <div class="navbar-header">
-          <a routerLink="/" class="navbar-brand"><img src="assets/img/ic_launcher.png"> FitnessGoals</a>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex flex-column">
+  <div class="d-flex flex-column">  
+    <a routerLink="/" class="navbar-brand">
+      <img src="assets/img/ic_launcher.png"> FitnessGoals
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
 
-      <div>
-          <ul class="nav">
-              <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link text-white" routerLink="/login">Zaloguj się</a>
-              </li>
-              <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link text-white" routerLink="/register">Zarejestruj się</a>
-              </li>
-            </ul>
-      </div>
-    
-  
-      <div>
-        <ul class="nav">
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/">Artykuły sportowe</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/">Plan treningowy</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/">Dieta</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/">Sklep</a>
-          </li>
-          <li class="dropdown nav-item" appDropdown #tools="appDropdown">
-              <a style="cursor: pointer;" class="nav-link text-white" role="button">    
-                Narzędzia
-              </a>
-              <ul class="dropdown-menu" [ngClass]="{'show':tools.isOpen}">
-                <li><a style="cursor: pointer;">Kalkulator BMI</a></li>
-                <li><a style="cursor: pointer;">Zapotrzebowanie kaloryczne</a></li>
-              </ul>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/">Czat</a>
-          </li>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link text-white" routerLink="/">Opinie</a>
-          </li>
-
-          <li class="dropdown nav-item" appDropdown #r="appDropdown">
-              <a style="cursor: pointer; padding: 0; margin: 0;" class="nav-link text-white" role="button">    
-                <fa-icon [icon]="faUser"></fa-icon>
-              </a>
-              <ul class="dropdown-menu" [ngClass]="{'show':r.isOpen}">
-                <li><a style="cursor: pointer;">Historia Postępów</a></li>
-                <li><a style="cursor: pointer;">Pomiary</a></li>
-                <li><a style="cursor: pointer;">Ustawienia</a></li>
-                <li><a style="cursor: pointer;">Wyloguj</a></li>
-              </ul>
-          </li>
-          
+  <div class="collapse navbar-collapse my-auto" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-white" routerLink="/">Artykuły sportowe</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-white" routerLink="/">Plan treningowy</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-white" routerLink="/">Dieta</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-white" routerLink="/">Sklep</a>
+      </li>
+      <li class="dropdown nav-item" appDropdown #tools="appDropdown">
+        <a style="cursor: pointer;" class="nav-link text-white" role="button">    
+          Narzędzia
+        </a>
+        <ul class="dropdown-menu" [ngClass]="{'show':tools.isOpen}">
+          <li><a style="cursor: pointer;">Kalkulator BMI</a></li>
+          <li><a style="cursor: pointer;">Zapotrzebowanie kaloryczne</a></li>
         </ul>
-      </div>
-     
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-white" routerLink="/">Czat</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-white" routerLink="/">Opinie</a>
+      </li>
+      <li class="dropdown nav-item" appDropdown #r="appDropdown">
+        <!-- <a style="cursor: pointer;" class="nav-link text-white my-auto" role="button">    
+          <fa-icon class="my-auto" [icon]="faUser"></fa-icon>
+        </a> -->
+        <ul class="dropdown-menu" [ngClass]="{'show':r.isOpen}">
+          <li><a style="cursor: pointer;">Historia Postepów</a></li>
+          <li><a style="cursor: pointer;">Pomiary</a></li>
+          <li><a style="cursor: pointer;">Ustawienia</a></li>
+          <li><a style="cursor: pointer;">Wyloguj</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-white" routerLink="/login">Zaloguj się</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-white" routerLink="/register">Zarejestruj się</a>
+      </li>
+    
+    </ul>
+  </div>
 </nav>
