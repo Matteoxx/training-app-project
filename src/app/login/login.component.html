@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col mx-auto">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="formHeader">
+            <h1>ZALOGUJ SIĘ</h1>
+            <p>Wypełnij formularz, aby się zalogować</p>
+        </div>
         <input type="text" class="form-control" formControlName="username" placeholder="Nazwa użytkownika" required>
         <input type="password" class="form-control" formControlName="password" placeholder="Hasło" required>
         <ng-template>
@@ -10,6 +14,6 @@
         </ng-template>
         <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Zaloguj się</button>
       </form>
-      {{loggedIn}}
+
     </div>
 </div>
