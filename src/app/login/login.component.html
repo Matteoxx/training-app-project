@@ -12,7 +12,8 @@
             <p>Nieprawidłowa nazwa użytkownika lub hasło</p>            
           </div>
         </ng-template>
-        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Zaloguj się</button>
+        <button type="submit" class="btn btn-primary">Zaloguj się</button>
+        <p>Nie masz konta? <a routerLink="/register">Zarejestruj się</a>.</p>
       </form>
 
     </div>
