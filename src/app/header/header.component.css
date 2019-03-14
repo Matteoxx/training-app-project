@@ -2,8 +2,12 @@
     font-size: 42px;
 }
 
-.nav-link {
+.nav-item .nav-link {
     font-size: 24px;
+}
+
+.nav-item .nav-link:hover {
+    background-color: #118cee;
 }
 
 fa-icon {
