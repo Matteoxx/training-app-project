@@ -11,6 +11,15 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ShopComponent } from './shop/shop.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { DietComponent } from './diet/diet.component';
+import { OpinionsComponent } from './opinions/opinions.component';
+import { ChatComponent } from './chat/chat.component';
+import { DailyPlanComponent } from './daily-plan/daily-plan.component';
+import { WeeklyPlanComponent } from './weekly-plan/weekly-plan.component';
+import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
+import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +27,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    ShopComponent,
+    ArticlesComponent,
+    DietComponent,
+    OpinionsComponent,
+    ChatComponent,
+    DailyPlanComponent,
+    WeeklyPlanComponent,
+    BmiCalcComponent,
+    CaloriesCalcComponent
     
   ],
   imports: [
