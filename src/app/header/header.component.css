@@ -22,6 +22,19 @@
     padding: 0;
 }
 
+#navbar-bottom .dropdown .dropdown-menu {
+    margin: 0;
+    background-color: #007bff;
+}
+
+#navbar-bottom .dropdown .dropdown-menu .dropdown-item{
+    color: white;
+}
+
+#navbar-bottom .dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #33BCCC;
+}
+
 fa-icon {
     font-size: 32px;
     padding: 0;
