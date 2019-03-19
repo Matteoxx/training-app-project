@@ -10,6 +10,9 @@ export class HeaderComponent implements OnInit {
 
   faUser = faUser;
 
+  //tutaj bedzie przechowywane czy zalogowany czy nie i na podstawie tego beda sie wyswietlac rozne rzeczy w menu
+  loggedIn = false;
+
   constructor() { }
 
   ngOnInit() {

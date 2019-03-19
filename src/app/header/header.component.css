@@ -1,15 +1,32 @@
 .navbar-brand {
-    font-size: 42px;
+    font-size: 26px;
 }
 
 .nav-item .nav-link {
-    font-size: 24px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
-.nav-item .nav-link:hover {
-    background-color: #118cee;
+#navbar-bottom .nav-item .nav-link:hover {
+    background-color: #33BCCC;
 }
+
+#navbar-top .dropdown .dropdown-toggle {
+    padding: 0;
+}
+
+#navbar-top .dropdown .dropdown-menu {
+    min-width: 0;
+    padding-right: 0;
+    left: -80px;
+    padding: 0;
+}
+
+/* #navbar-top .nav-item .nav-link {
+    padding-bottom: 0;
+} */
 
 fa-icon {
-    font-size: 26px;
+    font-size: 32px;
+    padding: 0;
 }

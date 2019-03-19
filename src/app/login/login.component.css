@@ -17,3 +17,9 @@ form input {
     flex-direction: column;
     text-align: center;
 }
+
+.dropdown-menu {
+    right: 10px;
+    top: initial;
+    left: initial;
+}
