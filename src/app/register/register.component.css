@@ -1,11 +1,11 @@
-form {
+.formHeader {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.formHeader {
-    margin-top: 20px;
+.formFooter {
     display: flex;
     align-items: center;
     flex-direction: column;

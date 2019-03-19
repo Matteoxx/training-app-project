@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   registerForm: FormGroup;
 
@@ -19,14 +20,13 @@ export class RegisterComponent implements OnInit {
       'repeatEmail': new FormControl('', Validators.required),
       'pass': new FormControl('', Validators.required),
       'repPass': new FormControl('', Validators.required),
+      'dateOfBirth': new FormControl('', Validators.required),
       'rulesCheck': new FormControl(false, Validators.required)
     })
   }
 
   onSubmit(){
-   
-    console.log(this.registerForm.value);
-
+    this.loginService.signupUser(this.registerForm).subscribe();
   }
 
 }
