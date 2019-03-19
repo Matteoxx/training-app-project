@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-center sticky-top py-0">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary d-flex justify-content-center py-0">
 
-  <div class="d-flex">  
+  <div>  
     <a routerLink="/" class="navbar-brand" style="padding: 0;">
       <img src="assets/img/ic_launcher.png"> FitnessGoals
     </a>
@@ -18,9 +18,6 @@
               </a>
               <app-login></app-login>
             </li>
-            <!-- <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn">
-              <a class="nav-link text-white" routerLink="/register">Zarejestruj się</a>
-            </li> -->
             <li class="dropdown nav-item" *ngIf="loggedIn">  
                 <a class="nav-link dropdown-toggle text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <fa-icon [icon]="faUser"></fa-icon>
