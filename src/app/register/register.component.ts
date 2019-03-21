@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     const password = this.registerForm.value['password'];
     const photoUrl = this.registerForm.value['photoUrl'];
       
-    this.loginService.signupUser(email, dateOfBirth, username, password, photoUrl).subscribe();
+    this.loginService.signupUser( email, dateOfBirth, username, password, photoUrl).subscribe();
   }
 
 }

@@ -21,16 +21,18 @@ export class LoginService {
       headers: httpHeaders
     }; 
 
-    return this.httpClient.post("https://fitnessgoals.herokuapp.com/user/add", JSON.stringify({
+    console.log(email);
+
+    return this.httpClient.post("https://fitnessgoals.herokuapp.com/user/add", {
       
-        "email":"matte7@o2.pl",
-        "dateOfBirth":"2018-12-12",
+        "email": email,
+        "dateOfBirth": dateOfBirth,
         "photo":"https://i1.memy.pl/obrazki/78bb383940_krzysiek.jpg",
         "authentication":{
-          "username":"mato77",
+          "username":"mato21",
           "password":"password"
         }
-    }), options);
+    }, options);
 
         
     
