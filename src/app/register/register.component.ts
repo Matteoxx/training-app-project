@@ -21,12 +21,20 @@ export class RegisterComponent implements OnInit {
       'pass': new FormControl('', Validators.required),
       'repPass': new FormControl('', Validators.required),
       'dateOfBirth': new FormControl('', Validators.required),
+      'photoUrl': new FormControl('', Validators.required),
       'rulesCheck': new FormControl(false, Validators.required)
     })
   }
 
   onSubmit(){
-    this.loginService.signupUser(this.registerForm).subscribe();
+
+    const email = this.registerForm.value['email'];
+    const dateOfBirth = this.registerForm.value['date'];
+    const username = this.registerForm.value['username'];
+    const password = this.registerForm.value['password'];
+    const photoUrl = this.registerForm.value['photoUrl'];
+      
+    this.loginService.signupUser(email, dateOfBirth, username, password, photoUrl).subscribe();
   }
 
 }
