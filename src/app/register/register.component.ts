@@ -33,7 +33,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.registerForm);
     this.formSubmitted = true;
 
     if(this.registerForm.controls['rulesCheck'].value !== false && this.registerForm.valid){
