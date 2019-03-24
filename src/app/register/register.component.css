@@ -10,3 +10,16 @@
     align-items: center;
     flex-direction: column;
 }
+
+.help-block {
+    color: red;
+    font-size: 12px;
+}
+
+.emailUsernameErr {
+    padding: 5px;
+    font-size: 14px;
+    background-color: #FF8888;
+    border-radius: 5px;
+    color: white;
+}
