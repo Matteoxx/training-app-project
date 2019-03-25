@@ -1,46 +1,106 @@
 <div class="row">
-  <div class="col mx-auto">
+  <div class="col-sm-10 col-md-5 mx-auto">
  
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="formHeader">
-            <h1>ZAREJESTRUJ SIĘ</h1>
+            <h3>ZAREJESTRUJ SIĘ</h3>
             <p>Wypełnij formularz, aby założyć konto</p>
         </div>
 
         <div class="form-group">
           <label for="username">Nazwa użytkownika:</label>
           <input type="text" class="form-control" formControlName="username" id="username" required>
+          <span
+              *ngIf="registerForm.get('username').hasError('required') && formSubmitted" 
+              class="help-block">
+              To pole jest wymagane
+          </span> 
         </div>
         <div class="form-group">
           <label for="email">Adres e-mail:</label>
-          <input type="email" class="form-control" formControlName="email" required>
+          <input 
+            type="email" 
+            class="form-control" 
+            formControlName="email" 
+            required>
+            <span
+              *ngIf="registerForm.get('email').hasError('email') && formSubmitted" 
+              class="help-block">
+              Wprowadź poprawny adres email
+            </span> 
+            <span
+              *ngIf="registerForm.get('email').hasError('required') && formSubmitted" 
+              class="help-block">
+              To pole jest wymagane
+            </span> 
         </div>
-        <div class="form-group">
-          <label for="repeatEmail">Powtórz adres e-mail:</label>
-          <input type="email" class="form-control" formControlName="repeatEmail" required>
-        </div>
+
         <div class="form-group">
           <label for="pass">Hasło:</label>
-          <input type="password" class="form-control" formControlName="pass" required>  
+          <input type="password" class="form-control" formControlName="pass" required minlength="5"> 
+          <span
+            *ngIf="registerForm.get('pass').hasError('required') && formSubmitted" 
+            class="help-block">
+            To pole jest wymagane
+          </span>
+          <span
+            *ngIf="registerForm.get('pass').hasError('minlength') && formSubmitted" 
+            class="help-block">
+            Hasło musi być dłuższe niż 5 znaków
+          </span> 
         </div>
         <div class="form-group">
           <label for="repPass">Powtórz hasło:</label>
-          <input type="password" class="form-control" formControlName="repPass" required>
+          <input type="password" class="form-control" formControlName="repPass" required minlength="5">
+          <span
+            *ngIf="registerForm.get('repPass').hasError('required') && formSubmitted" 
+            class="help-block">
+            To pole jest wymagane
+          </span> 
+          <span
+            *ngIf="registerForm.get('repPass').hasError('minlength') && formSubmitted" 
+            class="help-block">
+            Hasło musi być dłuższe niż 5 znaków
+          </span> 
+          <span
+            *ngIf="registerForm.get('repPass').hasError('ConfirmPassword') && formSubmitted"
+            class="help-block">
+            Hasła są różne
+          </span> 
+         
         </div>
         <div class="form-group">
           <label for="dateOfBirth">Data urodzenia: </label>
           <input type="date" id="dateOfBirth" class="form-control" formControlName="dateOfBirth" required>
+          <span
+            *ngIf="registerForm.get('dateOfBirth').hasError('required') && formSubmitted" 
+            class="help-block">
+            To pole jest wymagane
+          </span> 
         </div>
         <div class="form-group">
           <label for="photoUrl">Link do avatara: </label>
           <input type="text" id="photoUrl" class="form-control" formControlName="photoUrl" required>
+          <span
+            *ngIf="registerForm.get('photoUrl').hasError('required') && formSubmitted" 
+            class="help-block">
+            To pole jest wymagane
+          </span>  
         </div>
         <div class="formFooter">
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" formControlName="rulesCheck" id="rulesCheck">
                 <label class="form-check-label" for="rulesCheck">
-                    Akceptuję regulamin FitnessGoals
-                </label>
+                  Akceptuję regulamin FitnessGoals
+                </label><br>
+                <span
+                  *ngIf="!registerForm.get('rulesCheck').value && formSubmitted" 
+                  class="help-block">
+                  Musisz zaakceptować regulamin
+                </span>  
+            </div>
+            <div *ngIf="emailUsernameErrShow" class="emailUsernameErr" style="margin-top: 10px;">
+              Podana nazwa użytkownika lub adres email jest już w użyciu. 
             </div>
           <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Załóż konto</button>
         </div>

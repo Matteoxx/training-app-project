@@ -1,41 +1,66 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+import { UserData } from './login-response.model';
+
+interface LoginResponse {
+  body: string;
+  token: string;
+  username: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
+
 
   constructor(private httpClient: HttpClient) { }
 
-  loggedIn = false;
+  userData  = new Subject();
+  loggedIn = new Subject();
 
+  httpHeaders = new HttpHeaders({
+    'Content-Type' : 'application/json'
+  }); 
 
-  signupUser(email: string, dateOfBirth: string, username: string, password: string, photoUrl: string){
+  options = {
+    headers: this.httpHeaders
+  }; 
 
-    let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json'
-    }); 
+  signupUser(form: FormGroup){
 
-    let options = {
-      headers: httpHeaders
-    }; 
+    let signupData = {
+      "email": form.value['email'],
+      "dateOfBirth": form.value['dateOfBirth'],
+      "photo": form.value['photoUrl'],
+      "authentication":{
+        "username": form.value['username'],
+        "password": form.value['pass']
+    }};
 
-    console.log(email);
+    return this.httpClient.post("https://applicationfitness.herokuapp.com/user/add", signupData, this.options);
 
-    return this.httpClient.post("https://fitnessgoals.herokuapp.com/user/add", {
-      
-        "email": email,
-        "dateOfBirth": dateOfBirth,
-        "photo":"https://i1.memy.pl/obrazki/78bb383940_krzysiek.jpg",
-        "authentication":{
-          "username":"mato21",
-          "password":"password"
-        }
-    }, options);
+  }
 
-        
-    
+  signinUser(username: string, password: string){
+
+    this.loggedIn.next(false);
+
+    let signinData = {
+      "username": username,
+      "password": password
+    };
+
+    return this.httpClient.post<LoginResponse>("https://applicationfitness.herokuapp.com/auth/signin", signinData, this.options)
+      .subscribe(data => {
+        this.userData.next(new UserData(data.body, data.token, data.username));
+        this.loggedIn.next(true);
+      },
+      (error) => {
+      });
 
   }
 }
