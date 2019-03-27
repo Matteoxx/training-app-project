@@ -1,5 +1,5 @@
 export class UserData {
-    private body: string;
+    private body: boolean;
     private token: string;
     private username: string;
 
@@ -15,7 +15,7 @@ export class UserData {
         return this.username;
     }
 
-    constructor(body: string, token: string, username: string){
+    constructor(body: boolean, token: string, username: string){
         this.body = body;
         this.token = token;
         this.username = username;

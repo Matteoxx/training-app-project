@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
-import { UserData } from './login-response.model';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { SignupDetails } from './register-details/signup.details.model';
 
 interface LoginResponse {
-  body: string;
+  body: boolean;
   token: string;
   username: string;
 }
@@ -16,12 +17,10 @@ interface LoginResponse {
 
 export class LoginService {
 
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
-  constructor(private httpClient: HttpClient) { }
-
-  userData  = new Subject();
   loggedIn = new Subject();
-
+  
   httpHeaders = new HttpHeaders({
     'Content-Type' : 'application/json'
   }); 
@@ -45,10 +44,44 @@ export class LoginService {
 
   }
 
+  signupUserWithDetails(){
+
+    return this.httpClient.post("https://applicationfitness.herokuapp.com/user/body/add", 
+    {
+      "build": "mazolf",
+      "height": "100",
+      "bodyMeasurements": [
+        {
+          "date": "2018-12-10",
+          "weight": "100",
+          "measurements": [
+            {
+              "name": "neck",
+              "progress": "0",
+              "size": "40"
+            },
+            {
+              "name": "shoulder",
+              "progress": "0",
+              "size": "40"
+            }
+          ]
+        }
+      ]
+    }
+    , this.options)
+      .subscribe(
+        (resp: Response) => {
+          console.log(resp);
+        },
+        (error: Error) => {
+          console.log(error);
+        }
+      );
+    }
+
   signinUser(username: string, password: string){
-
-    this.loggedIn.next(false);
-
+    
     let signinData = {
       "username": username,
       "password": password
@@ -56,8 +89,20 @@ export class LoginService {
 
     return this.httpClient.post<LoginResponse>("https://applicationfitness.herokuapp.com/auth/signin", signinData, this.options)
       .subscribe(data => {
-        this.userData.next(new UserData(data.body, data.token, data.username));
+        localStorage.setItem('userData', JSON.stringify(data));
+        // this.token = data.token;
         this.loggedIn.next(true);
+
+    
+        this.router.navigate(['/details']);
+  
+
+        // if(data.body == false){
+        //   this.router.navigate(['/details']);
+        // } else {
+        //   this.router.navigate(['/']);
+        // }
+
       },
       (error) => {
       });
