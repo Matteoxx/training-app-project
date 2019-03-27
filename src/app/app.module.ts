@@ -6,11 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
+
 import { LoginService } from './login.service';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-
+import { RegisterComponent } from './register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShopComponent } from './shop/shop.component';
 import { ArticlesComponent } from './articles/articles.component';
@@ -21,14 +21,15 @@ import { DailyPlanComponent } from './daily-plan/daily-plan.component';
 import { WeeklyPlanComponent } from './weekly-plan/weekly-plan.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
+import { RegisterDetailsComponent } from './register-details/register-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     HeaderComponent,
+    RegisterComponent,
     ShopComponent,
     ArticlesComponent,
     DietComponent,
@@ -37,7 +38,8 @@ import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
     DailyPlanComponent,
     WeeklyPlanComponent,
     BmiCalcComponent,
-    CaloriesCalcComponent
+    CaloriesCalcComponent,
+    RegisterDetailsComponent,
     
   ],
   imports: [

@@ -11,10 +11,13 @@ import { DailyPlanComponent } from './daily-plan/daily-plan.component';
 import { WeeklyPlanComponent } from './weekly-plan/weekly-plan.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
+import { RegisterDetailsComponent } from './register-details/register-details.component';
 
+//zabezpieczyc sciezki
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},
+  {path: 'details', component: RegisterDetailsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'shop', component: ShopComponent},
   {path: 'articles', component: ArticlesComponent},
