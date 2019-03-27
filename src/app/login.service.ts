@@ -1,9 +1,8 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { SignupDetails } from './register-details/signup.details.model';
 
 interface LoginResponse {
   body: boolean;
@@ -44,38 +43,27 @@ export class LoginService {
 
   }
 
-  signupUserWithDetails(){
+  signupUserWithDetails(signupDetails){
 
-    return this.httpClient.post("https://applicationfitness.herokuapp.com/user/body/add", 
-    {
-      "build": "mazolf",
-      "height": "100",
-      "bodyMeasurements": [
-        {
-          "date": "2018-12-10",
-          "weight": "100",
-          "measurements": [
-            {
-              "name": "neck",
-              "progress": "0",
-              "size": "40"
-            },
-            {
-              "name": "shoulder",
-              "progress": "0",
-              "size": "40"
-            }
-          ]
-        }
-      ]
-    }
-    , this.options)
+    let userData: LoginResponse = JSON.parse(localStorage.getItem('userData'));
+    let token = userData.token;
+
+    let httpHeadersWithToken = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : 'Bearer ' +  token
+    }); 
+  
+    let options = {
+      headers: httpHeadersWithToken
+    }; 
+
+    return this.httpClient.post("https://applicationfitness.herokuapp.com/user/body/add", signupDetails, options)
       .subscribe(
         (resp: Response) => {
-          console.log(resp);
+          this.router.navigate(['/']);
         },
         (error: Error) => {
-          console.log(error);
+          
         }
       );
     }
@@ -90,18 +78,13 @@ export class LoginService {
     return this.httpClient.post<LoginResponse>("https://applicationfitness.herokuapp.com/auth/signin", signinData, this.options)
       .subscribe(data => {
         localStorage.setItem('userData', JSON.stringify(data));
-        // this.token = data.token;
         this.loggedIn.next(true);
 
-    
-        this.router.navigate(['/details']);
-  
-
-        // if(data.body == false){
-        //   this.router.navigate(['/details']);
-        // } else {
-        //   this.router.navigate(['/']);
-        // }
+        if(data.body == false){
+          this.router.navigate(['/details']);
+        } else {
+          this.router.navigate(['/']);
+        }
 
       },
       (error) => {

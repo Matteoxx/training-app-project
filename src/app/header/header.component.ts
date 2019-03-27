@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onLogout(){
     this.loginService.loggedIn.next(false);
+    localStorage.removeItem('userData');
   }
 
   ngOnDestroy(){

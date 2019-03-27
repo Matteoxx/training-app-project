@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/login.service';
-import { Router } from '@angular/router';
-import { SignupDetails } from './signup.details.model';
-import { BodyMeasurements } from './body.measurements.model';
-import { Measurements } from './measurements.model';
 import { Measurement } from './measurement.model';
 
 @Component({
@@ -14,86 +10,74 @@ import { Measurement } from './measurement.model';
 })
 export class RegisterDetailsComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService) { }
+
+  formSubmitted = false;
 
   registerDetailsForm: FormGroup;
 
   ngOnInit() {
     this.registerDetailsForm = new FormGroup({
       basic: new FormGroup({
-        'weight': new FormControl(''),
-        'height': new FormControl('')
+        'build': new FormControl('ektomorfik', Validators.required),
+        'weight': new FormControl('', Validators.required),
+        'height': new FormControl('', Validators.required)
       }),
       extended: new FormGroup({
-        'neck': new FormControl(''),
-        'shoulder': new FormControl(''),
-        'waist': new FormControl(''),
-        'hips': new FormControl(''),
-        'thigh': new FormControl(''),
-        'chest': new FormControl(''),
-        'forearm': new FormControl(''),
-        'calf': new FormControl(''),
-        'ankle': new FormControl('')
+        'neck': new FormControl('', Validators.required),
+        'shoulder': new FormControl('', Validators.required),
+        'waist': new FormControl('', Validators.required),
+        'hips': new FormControl('', Validators.required),
+        'thigh': new FormControl('', Validators.required),
+        'chest': new FormControl('', Validators.required),
+        'forearm': new FormControl('', Validators.required),
+        'calf': new FormControl('', Validators.required),
+        'ankle': new FormControl('', Validators.required)
       })
     })
   }
 
   onSubmit(){
-    let build = 'najlepsza budowa';
-    let currentData = '2018-02-02';
-    let measurementArray = [
-      
-      new Measurement('neck', '0', this.registerDetailsForm.controls.extended.value.neck),
-      new Measurement('shoulder', '0', this.registerDetailsForm.controls.extended.value.shoulder),
-      new Measurement('waist', '0', this.registerDetailsForm.controls.extended.value.waist),
-      new Measurement('hips', '0', this.registerDetailsForm.controls.extended.value.hips),
-      new Measurement('thigh', '0', this.registerDetailsForm.controls.extended.value.neck),
-      new Measurement('chest', '0', this.registerDetailsForm.controls.extended.value.chest),
-      new Measurement('forearm', '0', this.registerDetailsForm.controls.extended.value.forearm),
-      new Measurement('calf', '0', this.registerDetailsForm.controls.extended.value.calf),
-      new Measurement('ankle', '0', this.registerDetailsForm.controls.extended.value.ankle)
-    ]
 
+    this.formSubmitted = true;
+
+    if(this.registerDetailsForm.valid){
+      
       let signupDetails = {
-        'build': 'mazolf',
-        'height': 100,
+        'build': this.registerDetailsForm.controls.basic.value.build,
+        'height': this.registerDetailsForm.controls.basic.value.height,
         'bodyMeasurements': [
           {
-            'date': '2018-12-10',
-            'weight': '100',
+            'date': this.getCurrentDay(),
+            'weight': this.registerDetailsForm.controls.basic.value.weight,
             'measurements': [
-              {
-                'name': 'neck',
-                'progress': 0,
-                'size': 40
-              },
-              {
-                'name': 'shoulder',
-                'progress': 0,
-                'size': 40
-              }
+              new Measurement('neck', '0', this.registerDetailsForm.controls.extended.value.neck),
+              new Measurement('shoulder', '0', this.registerDetailsForm.controls.extended.value.shoulder),
+              new Measurement('waist', '0', this.registerDetailsForm.controls.extended.value.waist),
+              new Measurement('hips', '0', this.registerDetailsForm.controls.extended.value.hips),
+              new Measurement('thigh', '0', this.registerDetailsForm.controls.extended.value.neck),
+              new Measurement('chest', '0', this.registerDetailsForm.controls.extended.value.chest),
+              new Measurement('forearm', '0', this.registerDetailsForm.controls.extended.value.forearm),
+              new Measurement('calf', '0', this.registerDetailsForm.controls.extended.value.calf),
+              new Measurement('ankle', '0', this.registerDetailsForm.controls.extended.value.ankle)
             ]
           }
         ]
       }
-    // let signupDetails = new SignupDetails(
-    //   build, 
-    //   this.registerDetailsForm.controls.basic.value.height, [
-    //   new BodyMeasurements(
-    //     currentData, 
-    //     this.registerDetailsForm.controls.basic.value.weight,
-        
-      // build, 
-      // this.registerDetailsForm.controls.basic.value.height, [
-      // new BodyMeasurements(
-      //   currentData, 
-      //   this.registerDetailsForm.controls.basic.value.weight,
-      //   null
-        // new Measurements(measurementArray)
-      // )]
-    // );
 
-    this.loginService.signupUserWithDetails();
+      this.loginService.signupUserWithDetails(signupDetails);
+    }
+
+  
+  }
+
+  getCurrentDay(){
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    let yyyy = today.getFullYear();
+    let currentDate: string = yyyy + '-' + mm + '-' + dd;
+    return currentDate;
   }
 
 }
