@@ -7,11 +7,10 @@ import { ArticlesComponent } from './articles/articles.component';
 import { DietComponent } from './diet/diet.component';
 import { OpinionsComponent } from './opinions/opinions.component';
 import { ChatComponent } from './chat/chat.component';
-import { DailyPlanComponent } from './daily-plan/daily-plan.component';
-import { WeeklyPlanComponent } from './weekly-plan/weekly-plan.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
+import { ProgrammesComponent } from './programmes/programmes.component';
 
 //zabezpieczyc sciezki
 const routes: Routes = [
@@ -19,13 +18,12 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'details', component: RegisterDetailsComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'programmes', component: ProgrammesComponent},
   {path: 'shop', component: ShopComponent},
   {path: 'articles', component: ArticlesComponent},
   {path: 'diet', component: DietComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'opinions', component: OpinionsComponent},
-  {path: 'dailyPlan', component: DailyPlanComponent},
-  {path: 'weeklyPlan', component: WeeklyPlanComponent},
   {path: 'bmi', component: BmiCalcComponent},
   {path: 'calories', component: CaloriesCalcComponent}
 ];
