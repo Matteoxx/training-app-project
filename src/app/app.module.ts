@@ -20,6 +20,7 @@ import { ChatComponent } from './chat/chat.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
+import { ProgrammesComponent } from './programmes/programmes.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RegisterDetailsComponent } from './register-details/register-details.co
     BmiCalcComponent,
     CaloriesCalcComponent,
     RegisterDetailsComponent,
+    ProgrammesComponent,
     
   ],
   imports: [

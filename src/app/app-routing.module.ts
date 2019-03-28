@@ -10,6 +10,7 @@ import { ChatComponent } from './chat/chat.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
+import { ProgrammesComponent } from './programmes/programmes.component';
 
 //zabezpieczyc sciezki
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'details', component: RegisterDetailsComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'programmes', component: ProgrammesComponent},
   {path: 'shop', component: ShopComponent},
   {path: 'articles', component: ArticlesComponent},
   {path: 'diet', component: DietComponent},
