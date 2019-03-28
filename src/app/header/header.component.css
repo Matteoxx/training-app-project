@@ -7,10 +7,6 @@
     font-weight: 500;
 }
 
-#navbar-right .nav-item .nav-link:hover {
-    background-color: #33BCCC;
-}
-
 #navbar-right .dropdown .dropdown-toggle {
     padding: 0;
 }
@@ -24,7 +20,7 @@
 
 #navbar-right .dropdown .dropdown-menu {
     margin: 0;
-    background-color: #007bff;
+    background-color: #343a40;
 }
 
 #navbar-right .dropdown .dropdown-menu .dropdown-item{
@@ -32,7 +28,7 @@
 }
 
 #navbar-right .dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #33BCCC;
+    background-color: #343a40;
 }
 
 fa-icon {

@@ -17,8 +17,6 @@ import { ArticlesComponent } from './articles/articles.component';
 import { DietComponent } from './diet/diet.component';
 import { OpinionsComponent } from './opinions/opinions.component';
 import { ChatComponent } from './chat/chat.component';
-import { DailyPlanComponent } from './daily-plan/daily-plan.component';
-import { WeeklyPlanComponent } from './weekly-plan/weekly-plan.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
@@ -35,8 +33,6 @@ import { RegisterDetailsComponent } from './register-details/register-details.co
     DietComponent,
     OpinionsComponent,
     ChatComponent,
-    DailyPlanComponent,
-    WeeklyPlanComponent,
     BmiCalcComponent,
     CaloriesCalcComponent,
     RegisterDetailsComponent,
