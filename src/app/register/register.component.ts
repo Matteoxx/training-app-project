@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   formSubmitted = false;
 
   registerForm: FormGroup;
+  isLinear = false;
 
   ngOnInit() {
     this.registerForm = this.fb.group({

@@ -21,6 +21,18 @@ import { DailyPlanComponent } from './daily-plan/daily-plan.component';
 import { WeeklyPlanComponent } from './weekly-plan/weekly-plan.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +50,6 @@ import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
     WeeklyPlanComponent,
     BmiCalcComponent,
     CaloriesCalcComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -46,7 +57,16 @@ import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    MatStepperModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatButtonModule,
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
