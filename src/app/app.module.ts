@@ -19,6 +19,17 @@ import { OpinionsComponent } from './opinions/opinions.component';
 import { ChatComponent } from './chat/chat.component';
 import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
 import { ProgrammesComponent } from './programmes/programmes.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -39,8 +50,7 @@ import { EmployeeComponent } from './employee/employee.component';
     CaloriesCalcComponent,
     RegisterDetailsComponent,
     ProgrammesComponent,
-    EmployeeComponent,
-    
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +58,16 @@ import { EmployeeComponent } from './employee/employee.component';
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    MatStepperModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatButtonModule,
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
