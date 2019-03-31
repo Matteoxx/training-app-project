@@ -7,32 +7,28 @@
     font-weight: 500;
 }
 
-#navbar-bottom .nav-item .nav-link:hover {
-    background-color: #33BCCC;
-}
-
-#navbar-top .dropdown .dropdown-toggle {
+#navbar-right .dropdown .dropdown-toggle {
     padding: 0;
 }
 
-#navbar-top .dropdown .dropdown-menu {
+#navbar-right .dropdown .dropdown-menu {
     min-width: 0;
     padding-right: 0;
     left: -80px;
     padding: 0;
 }
 
-#navbar-bottom .dropdown .dropdown-menu {
+#navbar-right .dropdown .dropdown-menu {
     margin: 0;
-    background-color: #007bff;
+    background-color: #343a40;
 }
 
-#navbar-bottom .dropdown .dropdown-menu .dropdown-item{
+#navbar-right .dropdown .dropdown-menu .dropdown-item{
     color: white;
 }
 
-#navbar-bottom .dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #33BCCC;
+#navbar-right .dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #343a40;
 }
 
 fa-icon {
