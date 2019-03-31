@@ -8,6 +8,7 @@ interface LoginResponse {
   body: boolean;
   token: string;
   username: string;
+  roles: string[];
 }
 
 @Injectable({
@@ -19,7 +20,8 @@ export class LoginService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   loggedIn = new Subject();
-  
+  role  = new Subject();
+
   httpHeaders = new HttpHeaders({
     'Content-Type' : 'application/json'
   }); 
@@ -79,10 +81,15 @@ export class LoginService {
       .subscribe(data => {
         localStorage.setItem('userData', JSON.stringify(data));
         this.loggedIn.next(true);
-
+        
         if(data.body == false){
           this.router.navigate(['/details']);
-        } else {
+          this.role.next('ROLE_USER');
+        } else if(data.roles.includes('ROLE_EMPLOYEE')) {
+          this.router.navigate(['/employee']);
+          this.role.next('ROLE_EMPLOYEE');
+        } 
+        else {
           this.router.navigate(['/']);
         }
 

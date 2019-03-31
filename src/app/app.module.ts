@@ -21,6 +21,7 @@ import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
 import { ProgrammesComponent } from './programmes/programmes.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ProgrammesComponent } from './programmes/programmes.component';
     CaloriesCalcComponent,
     RegisterDetailsComponent,
     ProgrammesComponent,
+    EmployeeComponent,
     
   ],
   imports: [
