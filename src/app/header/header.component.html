@@ -12,7 +12,7 @@
   <!-- <div class="collapse navbar-collapse d-md-flex justify-content-lg-end" id="navbarSupportedContent"> -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
-    <div id="navbar-right" *ngIf="role == 'ROLE_GUEST'">
+    <div id="navbar-right" *ngIf="role == 'ROLE_GUEST' || role == 'ROLE_USER'">
       <ul class="navbar-nav text-center">
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link text-white" routerLink="/articles">Artykuły</a>
