@@ -11,6 +11,7 @@ import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
 import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
 import { ProgrammesComponent } from './programmes/programmes.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 //zabezpieczyc sciezki
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'chat', component: ChatComponent},
   {path: 'opinions', component: OpinionsComponent},
   {path: 'bmi', component: BmiCalcComponent},
-  {path: 'calories', component: CaloriesCalcComponent}
+  {path: 'calories', component: CaloriesCalcComponent},
+  {path: 'employee', component: EmployeeComponent}
 ];
 
 @NgModule({

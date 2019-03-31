@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   
   loggedIn = false;
 
+  role = 'ROLE_GUEST';
 
   constructor(private loginService: LoginService) { }
 
@@ -25,10 +26,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.loggedIn = loggedInStatus;
       }
     );
+
+    this.loginService.role.subscribe(
+      (role: string) => {
+        this.role = role;
+      }
+    );
   }
 
   onLogout(){
     this.loginService.loggedIn.next(false);
+    this.loginService.role.next('ROLE_GUEST');
     localStorage.removeItem('userData');
   }
 

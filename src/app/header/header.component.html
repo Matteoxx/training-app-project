@@ -12,7 +12,7 @@
   <!-- <div class="collapse navbar-collapse d-md-flex justify-content-lg-end" id="navbarSupportedContent"> -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
-    <div id="navbar-right">
+    <div id="navbar-right" *ngIf="role == 'ROLE_GUEST'">
       <ul class="navbar-nav text-center">
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link text-white" routerLink="/articles">Artykuły</a>
@@ -72,11 +72,33 @@
       </ul>
     </div>
 
-   
+    <div id="navbar-right" *ngIf="role == 'ROLE_EMPLOYEE'">
+      <ul class="navbar-nav text-center">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-white" routerLink="/">Tworzenie planu treningowego</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link text-white" routerLink="/">Sprawdź zamówienia</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn">
+          <a class="nav-link text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Zaloguj się
+          </a>
+          <app-login></app-login>
+        </li>
+        <li class="dropdown nav-item" *ngIf="loggedIn">  
+            <a class="nav-link dropdown-toggle text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <fa-icon [icon]="faUser"></fa-icon>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" routerLink="/" (click)="onLogout()">Wyloguj</a>
+            </div>
+        </li>
      
+     
+      </ul>
+    </div>
 
-
-
-
+  
   </div>
 </nav>
