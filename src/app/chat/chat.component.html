@@ -1,3 +1,24 @@
-<p>
-  chat works!
-</p>
+  <div class="container" style="width: 400px; margin-top: 20px;">
+
+    <form class="form-inline" style="margin-top: 20px;">
+      <div class="form-group">
+        <label for="name">User's Name:</label>
+        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" />
+      </div>
+      <button id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>
+    </form>
+
+    <table id="conversation" class="table table-striped" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Greetings</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let greeting of greetings">
+        <tr>
+          <td>{{greeting}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
