@@ -41,7 +41,7 @@ export class LoginService {
         "password": form.value['pass']
     }};
 
-    return this.httpClient.post("https://applicationfitness.herokuapp.com/user/add", signupData, this.options);
+    return this.httpClient.post('https://applicationfitness.herokuapp.com/user/add', signupData, this.options);
 
   }
 
@@ -59,7 +59,7 @@ export class LoginService {
       headers: httpHeadersWithToken
     }; 
 
-    return this.httpClient.post("https://applicationfitness.herokuapp.com/user/body/add", signupDetails, options)
+    return this.httpClient.post('https://applicationfitness.herokuapp.com/user/body/add', signupDetails, options)
       .subscribe(
         (resp: Response) => {
           this.router.navigate(['/']);
@@ -77,7 +77,7 @@ export class LoginService {
       "password": password
     };
 
-    return this.httpClient.post<LoginResponse>("https://applicationfitness.herokuapp.com/auth/signin", signinData, this.options)
+    return this.httpClient.post<LoginResponse>('https://applicationfitness.herokuapp.com/auth/signin', signinData, this.options)
       .subscribe(data => {
         localStorage.setItem('userData', JSON.stringify(data));
         this.loggedIn.next(true);
@@ -98,4 +98,9 @@ export class LoginService {
       });
 
   }
+
+  getSportArticles(){
+    return this.httpClient.get('https://applicationfitness.herokuapp.com/news/show', this.options);
+  }
+
 }
