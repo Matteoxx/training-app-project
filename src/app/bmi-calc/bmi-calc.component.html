@@ -1,3 +1,60 @@
-<p>
-  bmi-calc works!
-</p>
+<!--<div class="col-sm-50 col-md-50 mx-auto" >-->
+<div class="row">
+
+  <div class="card text-left">
+    <div class="formHeader " style="margin-left: 50px ">
+      <br>
+      <h3>Oblicz swoje BMI</h3><br>
+    </div>
+    <div class="card-body ">
+      <label>Płeć:</label>
+
+      <div class="custom-control custom-radio custom-control-inline ">
+        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline1">Mężczyzna</label>
+      </div>
+
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline2">Kobieta</label>
+      </div>
+      <br>
+    </div>
+
+    <div class="card-body ">
+      <label for="height">Podaj swój wzrost: [cm]</label>
+      <input [(ngModel)]="height" type="number" id="height" required><br>
+    </div>
+
+    <div class="card-body ">
+      <label for="weight">Podaj swoją wage: [kg]</label>
+      <input [(ngModel)]="weight" type="number" id="weight" required>
+    </div>
+
+    <div class="card-body ">
+      <button type="submit" (click)="calc_bmi()" class="btn btn-success">Oblicz wskaźnik BMI</button>
+      <br>
+    </div>
+
+    <div class="formFooter text-left " style="margin-left: 60px ">
+
+      <h5>Twoje BMI wynosi: </h5>
+
+      <h2>{{ bmi }}, {{ result }}</h2><br>
+    </div>
+    <div class="text-right">
+      <p>Normy wskaźnika BMI zostały sporządzone przez Światową</p>
+      <p> Organizację Zdrowia (ang. WHO). Najczęściej występującym</p>
+      <p> typem klasyfikacji wyników jest kategoryzacja rozszerzona, </p>
+      <p> która prezentuje się w poniższy sposób:</p>
+      <p> - poniżej 16,0 - wygłodzenie </p>
+      <p> - 16,0 - 16,99 - wychudzenie </p>
+      <p> - 17,0 - 18,49 - niedowagę </p>
+      <p> - 18,5 - 24,99 - wartość prawidłową </p>
+      <p> - 25,0 - 29,99 - nadwagę </p>
+      <p> - 30,0 - 34,99 - I stopień otyłości </p>
+      <p> - 35,0 - 39,99 - II stopień otyłości (otyłość kliniczna) </p>
+      <p> - powyżej 40,0 - III stopień otyłości (otyłość skrajna) </p>
+    </div>
+  </div>
+</div>
