@@ -1,5 +1,5 @@
-<div class="dropdown-menu">
-  <form class="px-0 py-0" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <input type="text" class="form-control" formControlName="username" placeholder="Nazwa użytkownika" required>
     </div>
@@ -7,8 +7,8 @@
       <input type="password" class="form-control" formControlName="password" placeholder="Hasło">
     </div>
     <button type="submit" class="btn btn-primary">Zaloguj się</button>
+    <a routerLink="/register">Nie masz konta? Zarejestruj się</a>
+    <a routerLink="/">Nie pamiętasz hasła?</a>
   </form>
-  <div class="dropdown-divider"></div>
-  <a class="dropdown-item" routerLink="/register">Nie masz konta? Zarejestruj się</a>
-  <a class="dropdown-item" href="#">Nie pamiętasz hasła?</a>
-</div>
+
+

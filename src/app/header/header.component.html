@@ -1,42 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-center">
+<nav class="navbar navbar-expand-lg navbar-dark py-1" style="background-color: #46208d;">
+  <a class="navbar-brand" href="#">Navbar w/ text</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText" *ngIf="role == 'ROLE_GUEST'">
+    
+    <ul class="navbar-nav mr-auto">
+    
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/articles">Artykuły</a>
+      </li>
 
-  <div>  
-    <a routerLink="/" class="navbar-brand" style="padding: 0;">
-      <img src="assets/img/ic_launcher.png"> FitnessGoals
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/programmes">Dieta i plany treningowe</a>
+      </li>
+      <li class="dropdown nav-item">  
+        <a class="nav-link" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Kalkulatory
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink="/bmi">BMI</a>
+          <a class="dropdown-item" routerLink="/calories">Zapotrzebowanie</a>
+        </div>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/chat">Czat</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/opinions">Opinie</a>
+      </li>
+  
+    </ul>
+  
+    <a class="nav-link text-white" routerLink="/login" style="cursor: pointer;">
+        Zaloguj się
     </a>
-    <button class="navbar-toggler" style="width: 54px;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
   </div>
 
-  <!-- <div class="collapse navbar-collapse d-md-flex justify-content-lg-end" id="navbarSupportedContent"> -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- -------------------------------------------------------------------------------- -->
+
+  <div class="collapse navbar-collapse" id="navbarText" *ngIf="role == 'ROLE_USER'">
     
-    <div id="navbar-right" *ngIf="role == 'ROLE_GUEST' || role == 'ROLE_USER'">
-      <ul class="navbar-nav text-center">
+      <ul class="navbar-nav mr-auto">
+      
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/articles">Artykuły</a>
+          <a class="nav-link" routerLink="/articles">Artykuły</a>
         </li>
-        <!-- <li class="dropdown nav-item">  
-          <a class="nav-link text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Plany treningowe
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" routerLink="/dailyPlan">Plan na dziś</a>
-            <a class="dropdown-item" routerLink="/weeklyPlan">Plan tygodniowy</a>
-          </div>
-        </li> -->
+  
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/programmes">Dieta i plany treningowe</a>
+          <a class="nav-link" routerLink="/programmes">Dieta i plany treningowe</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/diet">Dieta</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/shop">Sklep</a>
-        </li>
-        <li class="dropdown nav-item">  
-          <a class="nav-link text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="dropdown-calc nav-item">  
+          <a class="nav-link" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown-calc" aria-haspopup="true" aria-expanded="false">
             Kalkulatory
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -45,60 +62,28 @@
           </div>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/chat">Czat</a>
+          <a class="nav-link" routerLink="/chat">Czat</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/opinions">Opinie</a>
+          <a class="nav-link" routerLink="/opinions">Opinie</a>
         </li>
-
-        <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn">
-          <a class="nav-link text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Zaloguj się
-          </a>
-          <app-login></app-login>
-        </li>
-        <li class="dropdown nav-item" *ngIf="loggedIn">  
-            <a class="nav-link dropdown-toggle text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <fa-icon [icon]="faUser"></fa-icon>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" routerLink="/">Postępy</a>
-              <a class="dropdown-item" routerLink="/">Pomiary</a>
-              <a class="dropdown-item" routerLink="/">Ustawienia</a>
-              <a class="dropdown-item" routerLink="/" (click)="onLogout()">Wyloguj</a>
-            </div>
-        </li>
-     
+    
       </ul>
-    </div>
-
-    <div id="navbar-right" *ngIf="role == 'ROLE_EMPLOYEE'">
-      <ul class="navbar-nav text-center">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/">Tworzenie planu treningowego</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link text-white" routerLink="/">Sprawdź zamówienia</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn">
-          <a class="nav-link text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Zaloguj się
-          </a>
-          <app-login></app-login>
-        </li>
-        <li class="dropdown nav-item" *ngIf="loggedIn">  
-            <a class="nav-link dropdown-toggle text-white" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+      <div class="dropdown">
+          <a class="nav-link dropdown-toggle text-white" style="cursor: pointer; padding: 0;" id="dropdownUserSettingsButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <fa-icon [icon]="faUser"></fa-icon>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" routerLink="/" (click)="onLogout()">Wyloguj</a>
-            </div>
-        </li>
-     
-     
-      </ul>
-    </div>
-
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownUserSettingsButton">
+            <a class="dropdown-item" routerLink="/">Postępy</a>
+            <a class="dropdown-item" routerLink="/">Pomiary</a>
+            <a class="dropdown-item" routerLink="/">Ustawienia</a>
+            <a class="dropdown-item" routerLink="/" (click)="onLogout()">Wyloguj</a>
+          </div>
+      </div>
+   
   
-  </div>
+    </div>
+
+
 </nav>
