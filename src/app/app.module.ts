@@ -17,8 +17,8 @@ import { ArticlesComponent } from './articles/articles.component';
 import { DietComponent } from './diet/diet.component';
 import { OpinionsComponent } from './opinions/opinions.component';
 import { ChatComponent } from './chat/chat.component';
-import { BmiCalcComponent } from './bmi-calc/bmi-calc.component';
-import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
+import { BmiCalcComponent } from './calculators/bmi-calc/bmi-calc.component';
+import { CaloriesCalcComponent } from './/calculators/calories-calc/calories-calc.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {
   MatButtonModule,
