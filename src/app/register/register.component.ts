@@ -20,6 +20,10 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isLinear = false;
 
+  singleFileUploadInput = document.querySelector<HTMLInputElement>('#singleFileUploadInput');
+  singleFileUploadError = document.querySelector<HTMLDivElement>('#singleFileUploadError');
+  singleFileUploadSuccess = document.querySelector<HTMLDivElement>('#singleFileUploadSuccess');
+
   ngOnInit() {
     this.registerForm = this.fb.group({
       'username': new FormControl('', Validators.required),
@@ -50,6 +54,42 @@ export class RegisterComponent implements OnInit {
       );
 
     } 
+
   }
+
+  uploadSingleFile(file) {
+    var formData = new FormData();
+    formData.append("file", file);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://applicationfitness.herokuapp.com/uploadFile");
+
+    xhr.onload = function() {
+     
+        var response = JSON.parse(xhr.responseText);
+        console.log(response.fileDownloadUri);
+        if(xhr.status == 200) {
+          document.querySelector<HTMLInputElement>('#singleFileUploadInput').style.display = "none";
+          document.querySelector<HTMLDivElement>('#singleFileUploadSuccess').innerHTML = "<p>File Uploaded Successfully.</p><p>DownloadUrl : <a href='" + response.fileDownloadUri + "' target='_blank'>" + response.fileDownloadUri + "</a></p>";
+          document.querySelector<HTMLDivElement>('#singleFileUploadSuccess').style.display = "block";
+        } else {
+          document.querySelector<HTMLDivElement>('#singleFileUploadSuccess').style.display = "none";
+          document.querySelector<HTMLDivElement>('#singleFileUploadError').innerHTML = (response && response.message) || "Some Error Occurred";
+        }
+    }
+
+    xhr.send(formData);
+  }
+
+  upload(event: Event){
+    var files = document.querySelector<HTMLInputElement>('#singleFileUploadInput').files;
+    if(files.length === 0) {
+      document.querySelector<HTMLDivElement>('#singleFileUploadError').innerHTML = "Please select a file";
+      document.querySelector<HTMLDivElement>('#singleFileUploadError').style.display = "block";
+    }
+    this.uploadSingleFile(files[0]);
+    event.preventDefault();
+  }
+
 
 }
