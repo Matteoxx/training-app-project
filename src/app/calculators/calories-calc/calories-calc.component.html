@@ -1,0 +1,63 @@
+
+  <div class="row" style="padding-top: 10px">
+    <div class="col">
+        <h2 class="formTitle text-center"> Twoje zapotrzebowanie kaloryczne (BMR)</h2>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 20px;">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+      <form [formGroup]="caloriesForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Wybierz swoją płeć:</label><br>
+          <select class="custom-select" formControlName="gender">
+            <option *ngFor="let gender of genders" [value]="gender.id" >{{gender.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="height">Podaj swój wzrost: [cm]</label><br>
+          <input class="form-control" type="number" formControlName="height" required>
+        </div>
+
+        <div class="form-group">
+          <label for="weight">Podaj swoją wagę: [kg]</label><br>
+          <input class="form-control" type="number" formControlName="weight" required>
+        </div>
+
+        <div class="form-group">
+          <label for="age" style="margin-right: 100px">Podaj swój wiek: </label><br>
+          <input class="form-control" type="number" id="age" formControlName="age" required>
+        </div>
+
+        <div class="form-group">
+          <label>Wybierz rodzaj aktywności fizycznej:</label><br>
+          <select class="custom-select" formControlName="activity">
+            <option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Wybierz swój cel treningowy</label><br>
+          <select class="custom-select" formControlName="goal">
+            <option *ngFor="let goal of goals" [value]="goal.id">{{goal.name}}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!caloriesForm.valid">Oblicz BMR</button>
+        
+    
+      </form>
+
+    </div>
+  </div>
+
+  <div class="row" *ngIf="submitted" style="background-color: black; color: white; padding-bottom: 100px; ">
+    <div class="col">
+      <h5>Twoja podstawowa przemiana materii wynosi:</h5>
+      <h2>{{result}} kcal </h2>
+      <h5>Twoja Całkowita Przemiana Materii(CPM) wynosi: </h5>
+      <h2>{{ maintenanceCalories }} kcal</h2>
+      <h5>Twoje zapotrzebowanie kaloryczne po wybraniu celu wynosi: {{  trainingGoal   }} kcal</h5>
+    </div>
+  </div>
+
+  
