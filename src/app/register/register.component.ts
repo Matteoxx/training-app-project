@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(){
     this.formSubmitted = true;
 
-    // if(this.registerForm.controls['rulesCheck'].value !== false && this.registerForm.valid){
+    if(this.registerForm.controls['rulesCheck'].value !== false && this.registerForm.valid){
 
       this.loginService.signupUser(this.registerForm).subscribe(
         (response: Response) => {
@@ -45,18 +45,11 @@ export class RegisterComponent implements OnInit {
         (error: Response) => {
           if(error.status === 409){
             this.emailUsernameErrShow = true;
-          } else {
-            
-          }
+          } 
         }
       );
 
-    // } 
-
-   
- 
-    
-      
+    } 
   }
 
 }
