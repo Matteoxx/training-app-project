@@ -1,0 +1,21 @@
+p {
+  text-align: right;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+label {
+  margin-right: 50px;
+}
+
+.card {
+  background-repeat: no-repeat;
+  background-image: url("../bmi-calc/img.jpg");
+  width: 100%;
+  color: white;
+}
+
+.card-body {
+  margin-left: 50px;
+
+}
