@@ -1,24 +1,35 @@
-  <div class="container" style="width: 400px; margin-top: 20px;">
-
-    <form class="form-inline" style="margin-top: 20px;">
-      <div class="form-group">
-        <label for="name">User's Name:</label>
-        <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" />
-      </div>
-      <button id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>
-    </form>
-
-    <table id="conversation" class="table table-striped" style="margin-top: 20px;">
-      <thead>
-        <tr>
-          <th>Greetings</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let greeting of greetings">
-        <tr>
-          <td>{{greeting}}</td>
-        </tr>
-      </tbody>
-    </table>
-
+<div id="username-page">
+  <div class="username-page-container">
+      <h1 class="title">Type your username</h1>
+      <form id="usernameForm" name="usernameForm" (ngSubmit)="connect($event)">
+          <div class="form-group">
+              <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+          </div>
+          <div class="form-group">
+              <button type="submit" class="accent username-submit">Start Chatting</button>
+          </div>
+      </form>
   </div>
+</div>
+
+<div id="chat-page" class="hidden">
+  <div class="chat-container">
+      <div class="chat-header">
+          <h2>Spring WebSocket Chat Demo</h2>
+      </div>
+      <div class="connecting">
+          Connecting...
+      </div>
+      <ul id="messageArea">
+
+      </ul>
+      <form id="messageForm" name="messageForm" (ngSubmit)="sendMessage($event)">
+          <div class="form-group">
+              <div class="input-group clearfix">
+                  <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                  <button type="submit" class="primary">Send</button>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
