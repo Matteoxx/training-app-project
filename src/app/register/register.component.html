@@ -1,71 +1,58 @@
-<div class="row">
-  <div class="col mx-auto">
-    <mat-vertical-stepper [linear]="isLinear" #stepper>
-      <mat-step [stepControl]="registerForm">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <ng-template matStepLabel>Dane podstawowe</ng-template>
-          <div>
-            <mat-form-field>
-              <input matInput type="text" placeholder="Nazwa użytkownika" formControlName="username" required>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <input matInput type="email" placeholder="E-mail" formControlName="email" required>
-            </mat-form-field>
-          </div>
-          <!-- <div>
-            <mat-form-field>
-              <input matInput type="email" placeholder="Powtórz e-mail" formControlName="repeatEmail" required>
-            </mat-form-field>
-          </div> -->
-          <div>
-            <mat-form-field>
-              <input matInput type="password" placeholder="Hasło" formControlName="pass" required>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <input matInput type="password" placeholder="Powtórz hasło" formControlName="repPass" required>
-            </mat-form-field>
-          </div>
-
-          <div>
-            <button mat-raised-button color="primary" matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="registerForm">
-        <form [formGroup]="registerForm">
-          <ng-template matStepLabel>Dane szczególowe</ng-template>
-          <div>
-            <mat-form-field>
-              <input matInput [matDatepicker]="myDatepicker" placeholder="Data urodzenia">
-              <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-              <mat-datepicker #myDatepicker></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <input matInput type="url" placeholder="Link do zdjęcia profilowego" formControlName="pass" required>
-            </mat-form-field>
-          </div>
-          <div>
-              <button mat-raised-button color="primary"  matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
+<div class="row my-4 justify-content-center ">
+  <div class="col-10 mx-auto my-auto col-md-5 my-5 mx-5">
+    <div class="registerDiv">
+      <h1>Rejestracja</h1>
+      <h3>Wypłnij formularz, aby założyc konto</h3>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <ng-template matStepLabel>Dane podstawowe</ng-template>
+        <div>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Nazwa użytkownika" formControlName="username" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="email" placeholder="E-mail" formControlName="email" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Hasło" formControlName="pass" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Powtórz hasło" formControlName="repPass" required>
+          </mat-form-field>
+        </div>
+        <ng-template matStepLabel>Dane szczególowe</ng-template>
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="myDatepicker" placeholder="Data urodzenia">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput type="url" placeholder="Link do zdjęcia profilowego" formControlName="pass" required>
+          </mat-form-field>
+        </div>
         <ng-template matStepLabel>Done</ng-template>
         <div>
           <div>
             <mat-checkbox color="accent">Akceptuje regulamin</mat-checkbox>
           </div>
-          <button mat-raised-button color="warn" mat-button (click)="stepper.reset()">Reset</button>
-          <button mat-raised-button color="primary" type="submit" class=" mx-2">Załóż konto</button>
-
+          <button mat-raised-button color="warn" mat-button type="reset">Reset</button>
+          <button mat-raised-button color="primary" type="submit" class=" mx-2 my-2">Załóż konto</button>
         </div>
-      </mat-step>
-    </mat-vertical-stepper>
+      </form>
+    </div>
+  </div>
+  <div class="col-10 mx-auto my-auto col-md-6 my-5 mx-5">
+    <div class="registrationImage ">
+      <img src="./../../assets/img/trainingImage.jpg" alt="image"/>
+
+    </div>
   </div>
 </div>
