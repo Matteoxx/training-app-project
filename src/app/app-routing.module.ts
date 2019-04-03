@@ -12,11 +12,13 @@ import { CaloriesCalcComponent } from './calories-calc/calories-calc.component';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
 import { ProgrammesComponent } from './programmes/programmes.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { LoginComponent } from './login/login.component';
 
 //zabezpieczyc sciezki
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'details', component: RegisterDetailsComponent},
   {path: 'home', component: HomeComponent},
   {path: 'programmes', component: ProgrammesComponent},

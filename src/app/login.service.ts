@@ -79,18 +79,20 @@ export class LoginService {
 
     return this.httpClient.post<LoginResponse>('https://applicationfitness.herokuapp.com/auth/signin', signinData, this.options)
       .subscribe(data => {
+        
         localStorage.setItem('userData', JSON.stringify(data));
         this.loggedIn.next(true);
-        
-        if(data.body == false){
-          this.router.navigate(['/details']);
-          this.role.next('ROLE_USER');
-        } else if(data.roles.includes('ROLE_EMPLOYEE')) {
+
+        if(data.roles.includes('ROLE_EMPLOYEE')) {
           this.router.navigate(['/employee']);
           this.role.next('ROLE_EMPLOYEE');
-        } 
-        else {
-          this.router.navigate(['/']);
+        } else if(data.roles.includes('ROLE_USER')){
+          if(data.body == false ){
+            this.router.navigate(['/details']);
+          } else {
+            this.router.navigate(['/']);
+          }
+          this.role.next('ROLE_USER');
         }
 
       },

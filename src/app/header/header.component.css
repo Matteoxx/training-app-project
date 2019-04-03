@@ -1,37 +1,46 @@
-.navbar-brand {
-    font-size: 26px;
+/* .navbar-brand {
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .nav-item .nav-link {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 14px;
 }
 
 #navbar-right .dropdown .dropdown-toggle {
     padding: 0;
-}
+} */
 
-#navbar-right .dropdown .dropdown-menu {
+.dropdown .dropdown-menu {
     min-width: 0;
     padding-right: 0;
     left: -80px;
     padding: 0;
 }
 
-#navbar-right .dropdown .dropdown-menu {
+@media only screen and (max-width: 992px) {
+    .dropdown .dropdown-menu {
+        min-width: 0;
+        padding-right: 0;
+        left: -20px;
+        padding: 0;
+    }
+  }
+
+.dropdown .dropdown-menu {
     margin: 0;
-    background-color: #343a40;
+    background-color: #46208d;
 }
 
-#navbar-right .dropdown .dropdown-menu .dropdown-item{
+.dropdown .dropdown-menu .dropdown-item{
     color: white;
 }
 
-#navbar-right .dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #343a40;
+.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #57319d;
 }
 
 fa-icon {
-    font-size: 32px;
+    font-size: 20px;
     padding: 0;
 }
