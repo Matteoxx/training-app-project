@@ -23,5 +23,4 @@ export class ArticlesComponent implements OnInit {
         }
       );
   }
-
 }

@@ -1,3 +1,9 @@
-<p>
-  articles works!
-</p>
+<div><ol>
+  <li *ngFor="let news of sportArticles"><br>
+    <span id="title">{{ news.title }} </span><br>
+    <img src="{{news.photo}}" id="photo">
+    <span id="description">{{ news.description }}</span>
+    <br><br>    <br><br>     <br><br>
+  </li>
+</ol>
+</div>

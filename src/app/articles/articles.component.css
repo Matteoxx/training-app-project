@@ -1,0 +1,15 @@
+#title {
+  font-family: Verdana, "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+#description {
+  width: 300px;
+
+}
+#photo {
+  float: left;
+  width: 200px;
+}
+ol {
+  list-style: none;
+}
