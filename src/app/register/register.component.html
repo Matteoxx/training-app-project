@@ -2,9 +2,8 @@
   <div class="col-10 mx-auto my-auto col-md-5 my-5 mx-5">
     <div class="registerDiv">
       <h1>Rejestracja</h1>
-      <h3>Wypłnij formularz, aby założyc konto</h3>
+      <h3>Wypełnij formularz, aby założyć konto</h3>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <ng-template matStepLabel>Dane podstawowe</ng-template>
         <div>
           <mat-form-field>
             <input matInput type="text" placeholder="Nazwa użytkownika" formControlName="username" required>
@@ -25,27 +24,29 @@
             <input matInput type="password" placeholder="Powtórz hasło" formControlName="repPass" required>
           </mat-form-field>
         </div>
-        <ng-template matStepLabel>Dane szczególowe</ng-template>
         <div>
           <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker" placeholder="Data urodzenia">
+            <input matInput [matDatepicker]="myDatepicker" placeholder="Data urodzenia" formControlName="dateOfBirth" required>
             <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-            <mat-datepicker #myDatepicker></mat-datepicker>
+            <mat-datepicker #myDatepicker ></mat-datepicker>
           </mat-form-field>
         </div>
         <div>
           <mat-form-field>
-            <input matInput type="url" placeholder="Link do zdjęcia profilowego" formControlName="pass" required>
+            <input matInput type="url" placeholder="Link do zdjęcia profilowego" formControlName="photoUrl" required>
           </mat-form-field>
         </div>
-        <ng-template matStepLabel>Done</ng-template>
         <div>
           <div>
-            <mat-checkbox color="accent">Akceptuje regulamin</mat-checkbox>
+            <mat-checkbox color="accent" formControlName="rulesCheck">Akceptuję regulamin</mat-checkbox>
+          </div>
+          <div class="emailUsernameErr" *ngIf="emailUsernameErrShow">
+            Nazwa użytkownika lub adres email są już w użyciu.
           </div>
           <button mat-raised-button color="warn" mat-button type="reset">Reset</button>
           <button mat-raised-button color="primary" type="submit" class=" mx-2 my-2">Załóż konto</button>
         </div>
+        
       </form>
     </div>
   </div>
