@@ -67,8 +67,9 @@ export class RegisterComponent implements OnInit {
     xhr.open("POST", "https://applicationfitness.herokuapp.com/uploadFile");
 
     xhr.onload = function() {
-        console.log(xhr.responseText);
+     
         var response = JSON.parse(xhr.responseText);
+        console.log(response.fileDownloadUri);
         if(xhr.status == 200) {
           document.querySelector<HTMLInputElement>('#singleFileUploadInput').style.display = "none";
           document.querySelector<HTMLDivElement>('#singleFileUploadSuccess').innerHTML = "<p>File Uploaded Successfully.</p><p>DownloadUrl : <a href='" + response.fileDownloadUri + "' target='_blank'>" + response.fileDownloadUri + "</a></p>";
