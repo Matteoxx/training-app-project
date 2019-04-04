@@ -9,6 +9,7 @@ interface LoginResponse {
   token: string;
   username: string;
   roles: string[];
+  photo: string;
 }
 
 @Injectable({
@@ -30,12 +31,12 @@ export class LoginService {
     headers: this.httpHeaders
   }; 
 
-  signupUser(form: FormGroup){
+  signupUser(form: FormGroup, photoUrl: string){
 
     let signupData = {
       "email": form.value['email'],
       "dateOfBirth": form.value['dateOfBirth'],
-      "photo": form.value['photoUrl'],
+      "photo": photoUrl,
       "authentication":{
         "username": form.value['username'],
         "password": form.value['pass']

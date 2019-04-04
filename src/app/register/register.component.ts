@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, EmailValidator, FormBuilder } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { ConfirmPasswordValidator } from './confirm.password.validator';
@@ -20,6 +20,10 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isLinear = false;
 
+  photoUrl = ''; 
+
+  
+
   singleFileUploadInput = document.querySelector<HTMLInputElement>('#singleFileUploadInput');
   singleFileUploadError = document.querySelector<HTMLDivElement>('#singleFileUploadError');
   singleFileUploadSuccess = document.querySelector<HTMLDivElement>('#singleFileUploadSuccess');
@@ -31,7 +35,6 @@ export class RegisterComponent implements OnInit {
       'pass': new FormControl('', [Validators.required, Validators.minLength(5)]),
       'repPass': new FormControl('', [Validators.required, Validators.minLength(5)]),
       'dateOfBirth': new FormControl('', Validators.required),
-      'photoUrl': new FormControl('', Validators.required),
       'rulesCheck': new FormControl(false)
     }, { validator: ConfirmPasswordValidator.MatchPassword}
     )
@@ -42,7 +45,7 @@ export class RegisterComponent implements OnInit {
 
     if(this.registerForm.controls['rulesCheck'].value !== false && this.registerForm.valid){
 
-      this.loginService.signupUser(this.registerForm).subscribe(
+      this.loginService.signupUser(this.registerForm, this.photoUrl).subscribe(
         (response: Response) => {
           this.router.navigate(['/']);
         },
@@ -61,35 +64,32 @@ export class RegisterComponent implements OnInit {
     var formData = new FormData();
     formData.append("file", file);
 
+    let _this = this;
+
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://applicationfitness.herokuapp.com/uploadFile");
+    xhr.open("POST", "https://applicationfitness.herokuapp.com/uploadPhoto");
 
     xhr.onload = function() {
-     
         var response = JSON.parse(xhr.responseText);
-        console.log(response.fileDownloadUri);
         if(xhr.status == 200) {
-          document.querySelector<HTMLInputElement>('#singleFileUploadInput').style.display = "none";
-          document.querySelector<HTMLDivElement>('#singleFileUploadSuccess').innerHTML = "<p>File Uploaded Successfully.</p><p>DownloadUrl : <a href='" + response.fileDownloadUri + "' target='_blank'>" + response.fileDownloadUri + "</a></p>";
-          document.querySelector<HTMLDivElement>('#singleFileUploadSuccess').style.display = "block";
+          _this.photoUrl = response.photoUrl;
+          document.querySelector<HTMLImageElement>('#photoImg').src = response.photoUrl;
         } else {
-          document.querySelector<HTMLDivElement>('#singleFileUploadSuccess').style.display = "none";
-          document.querySelector<HTMLDivElement>('#singleFileUploadError').innerHTML = (response && response.message) || "Some Error Occurred";
+          console.log("błąd dodawania avatara");
         }
     }
 
     xhr.send(formData);
-  }
+}
 
   upload(event: Event){
-    var files = document.querySelector<HTMLInputElement>('#singleFileUploadInput').files;
-    if(files.length === 0) {
-      document.querySelector<HTMLDivElement>('#singleFileUploadError').innerHTML = "Please select a file";
-      document.querySelector<HTMLDivElement>('#singleFileUploadError').style.display = "block";
-    }
+  var files = document.querySelector<HTMLInputElement>('#singleFileUploadInput').files;
+  if(files.length === 0) {
+    document.querySelector<HTMLDivElement>('#singleFileUploadError').innerHTML = "Please select a file";
+    document.querySelector<HTMLDivElement>('#singleFileUploadError').style.display = "block";
+  }
     this.uploadSingleFile(files[0]);
     event.preventDefault();
   }
-
 
 }
