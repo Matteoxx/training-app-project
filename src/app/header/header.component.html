@@ -69,7 +69,9 @@
       
       <div class="dropdown">
           <a class="nav-link dropdown-toggle text-white" style="cursor: pointer; padding: 0;" id="dropdownUserSettingsButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <fa-icon [icon]="faUser"></fa-icon>
+              <!-- <fa-icon [icon]="faUser"></fa-icon> -->
+              <img [src]="userAvatar" style="width: 40px; height: 40px; border-radius: 50%">
+              <span style="margin-left: 5px;">{{username}}</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownUserSettingsButton">
             <a class="dropdown-item" routerLink="/">Postępy</a>
@@ -91,7 +93,7 @@
             <li class="nav-item" routerLinkActive="active">
               <a class="nav-link" routerLink="/">Sprawdź zamówienia</a>
             </li>
-    
+            
             <li class="dropdown nav-item">  
                 <a class="nav-link dropdown-toggle" style="cursor: pointer;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <fa-icon [icon]="faUser"></fa-icon>
