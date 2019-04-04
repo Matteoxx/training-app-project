@@ -28,6 +28,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatNativeDateModule,
+  MatRadioModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
@@ -68,6 +69,7 @@ import { EmployeeComponent } from './employee/employee.component';
     MatDatepickerModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatRadioModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

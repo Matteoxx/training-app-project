@@ -34,6 +34,9 @@ export class LoginService {
   signupUser(form: FormGroup, photoUrl: string){
 
     let signupData = {
+      'gender': form.value['gender'],
+      'firstName': form.value['firstName'],
+      'lastName': form.value['lastName'],
       "email": form.value['email'],
       "dateOfBirth": form.value['dateOfBirth'],
       "photo": photoUrl,
