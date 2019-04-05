@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
 
     if(this.registerForm.controls['rulesCheck'].value !== false && this.registerForm.valid){
 
-      this.loginService.signupUser(this.registerForm, this.photoUrl).subscribe(
+      this.loginService.signupUser(this.registerForm, String(this.photoUrl)).subscribe(
         (response: Response) => {
           this.router.navigate(['/']);
         },
@@ -76,7 +76,6 @@ export class RegisterComponent implements OnInit {
         var response = JSON.parse(xhr.responseText);
         if(xhr.status == 200) {
           _this.photoUrl = response.photoUrl;
-          document.querySelector<HTMLImageElement>('#photoImg').src = response.photoUrl;
         } else {
           console.log("błąd dodawania avatara");
         }
