@@ -1,21 +1,29 @@
-import { Component} from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef} from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
+
+interface LoginResponse {
+  body: boolean;
+  token: string;
+  username: string;
+  roles: string[];
+  photo: string;
+}
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent{
+export class ChatComponent implements OnInit{
 
-  // usernamePage = document.querySelector('#username-page');
-  // chatPage = document.querySelector('#chat-page');
-  usernameForm = document.querySelector('#usernameForm');
-  messageForm = document.querySelector('#messageForm');
-  messageInput = document.querySelector<HTMLInputElement>('#message');
-  messageArea = document.querySelector('#messageArea');
-  connectingElement = document.querySelector('.connecting');
+  constructor(private renderer: Renderer2){}
+
+  @ViewChild('chatPage') chatPage: ElementRef;
+  @ViewChild('messageForm') messageForm: ElementRef;
+  @ViewChild('messageInput') messageInput: ElementRef;
+  @ViewChild('messageArea') messageArea: ElementRef;
+  @ViewChild('connectingElement') connectingElement: ElementRef;
 
   stompClient = null;
   username = null;
@@ -25,64 +33,32 @@ export class ChatComponent{
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
   ];
 
-
+  userData: LoginResponse = JSON.parse(localStorage.getItem('userData'));
+  token = this.userData.token;
+  sender = this.userData.username;
 
   onError(error: Error) {
-    document.querySelector<HTMLDivElement>('.connecting').textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
-    document.querySelector<HTMLDivElement>('.connecting').style.color = 'red';
+    const text = this.renderer.createText('Could not connect to WebSocket server. Please refresh this page to try again!');
+    this.renderer.appendChild(this.connectingElement.nativeElement, text);
+    this.renderer.setStyle(this.connectingElement.nativeElement, 'color', 'red');
   }
 
 
   sendMessage(event: Event) {
-      var messageContent = document.querySelector<HTMLInputElement>('#message').value.trim();
+
+      var messageContent = this.messageInput.nativeElement.value.trim();
       if(messageContent && this.stompClient) {
           var chatMessage = {
-              sender: this.username,
-              content: document.querySelector<HTMLInputElement>('#message').value,
+              sender: this.sender,
+              content: this.messageInput.nativeElement.value,
+              date: new Date(),
               type: 'CHAT'
           };
+
           this.stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
-          document.querySelector<HTMLInputElement>('#message').value = '';
+          this.messageInput.nativeElement.value = '';
       }
       event.preventDefault();
-  }
-
-
-  onMessageReceived(payload) {
-    var message = JSON.parse(payload.body);
-
-    var messageElement = document.createElement('li');
-
-    if(message.type === 'JOIN') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!';
-    } else if (message.type === 'LEAVE') {
-        messageElement.classList.add('event-message');
-        message.content = message.sender + ' left!';
-    } else {
-        messageElement.classList.add('chat-message');
-
-        var avatarElement = document.createElement('i');
-        var avatarText = document.createTextNode(message.sender[0]);
-        avatarElement.appendChild(avatarText);
-        avatarElement.style['background-color'] = this.getAvatarColor(message.sender);
-
-        messageElement.appendChild(avatarElement);
-
-        var usernameElement = document.createElement('span');
-        var usernameText = document.createTextNode(message.sender);
-        usernameElement.appendChild(usernameText);
-        messageElement.appendChild(usernameElement);
-    }
-
-    var textElement = document.createElement('p');
-    var messageText = document.createTextNode(message.content);
-    textElement.appendChild(messageText);
-
-    messageElement.appendChild(textElement);
-
-    this.messageArea.appendChild(messageElement);
-    this.messageArea.scrollTop = this.messageArea.scrollHeight;
   }
 
   getAvatarColor(messageSender) {
@@ -94,63 +70,91 @@ export class ChatComponent{
     return this.colors[index];
   }
 
-  connect(event: Event) {
-    this.username = document.querySelector<HTMLInputElement>('#name').value.trim();
+  connect() {
 
-    if(this.username) {
-        document.querySelector<HTMLDivElement>('#username-page').classList.add('hidden');
-        document.querySelector<HTMLDivElement>('#chat-page').classList.remove('hidden');
+    const _this = this;
+    
+    var socket = new SockJS('https://applicationfitness.herokuapp.com/ws');
+    this.stompClient = Stomp.over(socket);
 
-        const _this = this;
-        var socket = new SockJS('https://applicationfitness.herokuapp.com/ws');
-        this.stompClient = Stomp.over(socket);
-        this.stompClient.connect({}, function(frame){
-        
-          _this.stompClient.subscribe('/topic/public', function (payload) {
+    this.stompClient.connect({}, function(frame){
+    
+      _this.stompClient.subscribe('/topic/public', function (payload) {
 
-            var message = JSON.parse(payload.body);
 
-            var messageElement = document.createElement('li');
+        var message = JSON.parse(payload.body);
 
-            if(message.type === 'JOIN') {
-                messageElement.classList.add('event-message');
-                message.content = message.sender + ' joined!';
-            } else if (message.type === 'LEAVE') {
-                messageElement.classList.add('event-message');
-                message.content = message.sender + ' left!';
-            } else {
-                messageElement.classList.add('chat-message');
+        var messageElement = _this.renderer.createElement('li');
+     
 
-                var avatarElement = document.createElement('i');
-                var avatarText = document.createTextNode(message.sender[0]);
-                avatarElement.appendChild(avatarText);
-                avatarElement.style['background-color'] = _this.getAvatarColor(message.sender);
+        if(message.type === 'JOIN') {
+            _this.renderer.addClass(messageElement, 'event-message');
 
-                messageElement.appendChild(avatarElement);
+            message.content = message.sender + ' joined!';
+        } else if (message.type === 'LEAVE') {
+            _this.renderer.addClass(messageElement, 'event-message');
 
-                var usernameElement = document.createElement('span');
-                var usernameText = document.createTextNode(message.sender);
-                usernameElement.appendChild(usernameText);
-                messageElement.appendChild(usernameElement);
-            }
+            message.content = message.sender + ' left!';
+        } else {
+            _this.renderer.addClass(messageElement, 'chat-message');
 
-            var textElement = document.createElement('p');
-            var messageText = document.createTextNode(message.content);
-            textElement.appendChild(messageText);
 
-            messageElement.appendChild(textElement);
+            var avatarElement = _this.renderer.createElement('i');
 
-            document.querySelector('#messageArea').appendChild(messageElement);
-            document.querySelector('#messageArea').scrollTop = document.querySelector('#messageArea').scrollHeight;
 
-          });
+            var avatarText = _this.renderer.createText(message.sender[0]);
+          
 
-          _this.stompClient.send("/app/chat.addUser",{}, JSON.stringify({sender: this.username, type: 'JOIN'}))
+            _this.renderer.appendChild(avatarElement, avatarText);
+     
+            _this.renderer.setStyle(avatarElement, 'background-color', _this.getAvatarColor(message.sender));
+ 
+
+            _this.renderer.appendChild(messageElement, avatarElement);
   
-          document.querySelector<HTMLDivElement>('.connecting').classList.add('hidden');
-        }, this.onError);
-    event.preventDefault();
-    }
+
+            var usernameElement = _this.renderer.createElement('span');
+     
+
+            var usernameText = _this.renderer.createText(message.sender);
+
+
+            _this.renderer.appendChild(usernameElement, usernameText);
+   
+            _this.renderer.appendChild(messageElement, usernameElement);
+    
+        }
+
+        var textElement = _this.renderer.createElement('p');
+
+        var messageText = _this.renderer.createText(message.content);
+
+
+        _this.renderer.appendChild(textElement, messageText);
+
+
+        _this.renderer.appendChild(messageElement, textElement);
+
+
+        _this.renderer.appendChild(_this.messageArea.nativeElement, messageElement);
+
+      
+
+        _this.messageArea.nativeElement.scrollTop = _this.messageArea.nativeElement.scrollHeight;
+        
+
+      });
+
+      _this.stompClient.send("/app/chat.addUser", {} , JSON.stringify({sender: _this.sender, type: 'JOIN'}))
+
+      _this.renderer.addClass(_this.connectingElement.nativeElement, 'hidden');
+
+    }, this.onError);
+   
+  }
+
+  ngOnInit(){
+    this.connect();
   }
 
 }
