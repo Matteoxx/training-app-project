@@ -34,6 +34,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterDetailsComponent } from './register-details/register-details.component';
 import { ProgrammesComponent } from './programmes/programmes.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { ArticlesService } from './articles/articles.service';
+import { OpinionsService } from './opinions/opinions.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,7 @@ import { EmployeeComponent } from './employee/employee.component';
     MatButtonModule,
     MatRadioModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, ArticlesService, OpinionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
