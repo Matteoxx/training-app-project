@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
 import { Articles } from './articles.model';
+import { ArticlesService } from './articles.service';
 
 @Component({
   selector: 'app-articles',
@@ -11,11 +11,10 @@ export class ArticlesComponent implements OnInit {
   
   sportArticles: Articles;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private articlesService: ArticlesService) { }
 
   ngOnInit() {
-    this.loginService.getSportArticles()
-      .subscribe(
+    this.articlesService.getSportArticles().subscribe(
         (resp: Articles) => {
           this.sportArticles = resp;
         },

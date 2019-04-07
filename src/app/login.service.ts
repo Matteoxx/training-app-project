@@ -3,14 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-
-interface LoginResponse {
-  body: boolean;
-  token: string;
-  username: string;
-  roles: string[];
-  photo: string;
-}
+import { LoginResponse } from './login.response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +13,36 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  loggedIn = new Subject();
   role  = new Subject();
 
-  httpHeaders = new HttpHeaders({
-    'Content-Type' : 'application/json'
-  }); 
+  getHeaders(){
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json'
+    }); 
+  
+    let options = {
+      headers: httpHeaders
+    }; 
 
-  options = {
-    headers: this.httpHeaders
-  }; 
+    return options;
+  }
+
+  getHeadersWithToken(){
+
+    let userData = this.getLoggedUserData();
+    let token = userData.token;
+
+    let httpHeadersWithToken = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization' : 'Bearer ' +  token
+    }); 
+  
+    let options = {
+      headers: httpHeadersWithToken
+    }; 
+
+    return options;
+  }
 
   signupUser(form: FormGroup, photoUrl: string){
 
@@ -45,25 +58,13 @@ export class LoginService {
         "password": form.value['pass']
     }};
 
-    return this.httpClient.post('https://applicationfitness.herokuapp.com/user/add', signupData, this.options);
+    return this.httpClient.post('https://applicationfitness.herokuapp.com/user/add', signupData, this.getHeaders());
 
   }
 
   signupUserWithDetails(signupDetails){
 
-    let userData: LoginResponse = JSON.parse(localStorage.getItem('userData'));
-    let token = userData.token;
-
-    let httpHeadersWithToken = new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'Authorization' : 'Bearer ' +  token
-    }); 
-  
-    let options = {
-      headers: httpHeadersWithToken
-    }; 
-
-    return this.httpClient.post('https://applicationfitness.herokuapp.com/user/body/add', signupDetails, options)
+    return this.httpClient.post('https://applicationfitness.herokuapp.com/user/body/add', signupDetails, this.getHeadersWithToken())
       .subscribe(
         (resp: Response) => {
           this.router.navigate(['/']);
@@ -81,11 +82,10 @@ export class LoginService {
       "password": password
     };
 
-    return this.httpClient.post<LoginResponse>('https://applicationfitness.herokuapp.com/auth/signin', signinData, this.options)
+    return this.httpClient.post<LoginResponse>('https://applicationfitness.herokuapp.com/auth/signin', signinData, this.getHeaders())
       .subscribe(data => {
         
         localStorage.setItem('userData', JSON.stringify(data));
-        this.loggedIn.next(true);
 
         if(data.roles.includes('ROLE_EMPLOYEE')) {
           this.router.navigate(['/employee']);
@@ -105,8 +105,14 @@ export class LoginService {
 
   }
 
+  getLoggedUserData(){
+    let userData: LoginResponse;
+    userData = JSON.parse(localStorage.getItem('userData'));
+    return userData;
+  }
+
   getSportArticles(){
-    return this.httpClient.get('https://applicationfitness.herokuapp.com/news/show', this.options);
+    return this.httpClient.get('https://applicationfitness.herokuapp.com/news/show', this.getHeaders());
   }
 
 }
