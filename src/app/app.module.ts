@@ -36,6 +36,7 @@ import { ProgrammesComponent } from './programmes/programmes.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ArticlesService } from './articles/articles.service';
 import { OpinionsService } from './opinions/opinions.service';
+import { ChatService } from './chat/chat.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { OpinionsService } from './opinions/opinions.service';
     MatButtonModule,
     MatRadioModule
   ],
-  providers: [LoginService, ArticlesService, OpinionsService],
+  providers: [LoginService, ArticlesService, OpinionsService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
