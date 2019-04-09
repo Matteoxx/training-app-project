@@ -116,7 +116,7 @@ button.primary {
     position: relative;
 }
 
-#chat-page .chat-message i {
+#chat-page .chat-message i, #chat-page .chat-message img {
     position: absolute;
     width: 42px;
     height: 42px;
@@ -131,6 +131,11 @@ button.primary {
     border-radius: 50%;
     font-style: normal;
     text-transform: uppercase;
+}
+
+.messageDate {
+    font-size: 12px;
+    margin: 0;
 }
 
 #chat-page .chat-message span {
