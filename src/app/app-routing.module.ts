@@ -13,6 +13,9 @@ import { RegisterDetailsComponent } from './register-details/register-details.co
 import { ProgrammesComponent } from './programmes/programmes.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './login/login.component';
+import { OpinionsDietsComponent } from './opinions/opinions-diets/opinions-diets.component';
+import { OpinionsTrainersComponent } from './opinions/opinions-trainers/opinions-trainers.component';
+import { OpinionsTrainerDetailsComponent } from './opinions/opinions-trainers/opinions-trainer-details/opinions-trainer-details.component';
 
 //zabezpieczyc sciezki
 const routes: Routes = [
@@ -26,7 +29,12 @@ const routes: Routes = [
   {path: 'articles', component: ArticlesComponent},
   {path: 'diet', component: DietComponent},
   {path: 'chat', component: ChatComponent},
-  {path: 'opinions', component: OpinionsComponent},
+  {path: 'opinions', component: OpinionsComponent, children: [
+    { path: 'diets', component: OpinionsDietsComponent },
+    { path: 'trainers', component: OpinionsTrainersComponent, children: [
+      { path: ':id', component: OpinionsTrainerDetailsComponent}
+    ]}
+  ]},
   {path: 'bmi', component: BmiCalcComponent},
   {path: 'calories', component: CaloriesCalcComponent},
   {path: 'employee', component: EmployeeComponent}

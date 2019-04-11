@@ -35,8 +35,13 @@ import { RegisterDetailsComponent } from './register-details/register-details.co
 import { ProgrammesComponent } from './programmes/programmes.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ArticlesService } from './articles/articles.service';
-import { OpinionsService } from './opinions/opinions.service';
 import { ChatService } from './chat/chat.service';
+import { OpinionsDietsComponent } from './opinions/opinions-diets/opinions-diets.component';
+import { OpinionsTrainersComponent } from './opinions/opinions-trainers/opinions-trainers.component';
+import { OpinionsTrainersService } from './opinions/opinions-trainers/opinions-trainers.service';
+import { OpinionsTrainersListComponent } from './opinions/opinions-trainers/opinions-trainers-list/opinions-trainers-list.component';
+import { OpinionsTrainerDetailsComponent } from './opinions/opinions-trainers/opinions-trainer-details/opinions-trainer-details.component';
+import { OpinionsDietService } from './opinions/opinions-diets/opinions-diet.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,11 @@ import { ChatService } from './chat/chat.service';
     CaloriesCalcComponent,
     RegisterDetailsComponent,
     ProgrammesComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    OpinionsDietsComponent,
+    OpinionsTrainersComponent,
+    OpinionsTrainersListComponent,
+    OpinionsTrainerDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +83,7 @@ import { ChatService } from './chat/chat.service';
     MatButtonModule,
     MatRadioModule
   ],
-  providers: [LoginService, ArticlesService, OpinionsService, ChatService],
+  providers: [LoginService, ArticlesService, OpinionsTrainersService, OpinionsDietService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

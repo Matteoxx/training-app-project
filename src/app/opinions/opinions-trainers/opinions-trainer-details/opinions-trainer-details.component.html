@@ -1,0 +1,13 @@
+<ul>
+  <li *ngFor="let opinion of opinions">
+    <img [src]="opinion.photo" width="75px" height="75px"><br>
+    {{opinion.date | date: 'dd-MM-yyyy HH:mm' }} <br>
+    {{opinion.username}} <br>
+    {{opinion.message}} <br>
+  </li>
+  <form [formGroup]="opinionForm" (ngSubmit)="addOpinion()">
+    <input type="text" class="form-control" formControlName="opinion">
+    <button type="submit" class="btn btn-primary" [disabled]="!opinionForm.valid">Add opinion</button>
+  </form>
+</ul>
+
