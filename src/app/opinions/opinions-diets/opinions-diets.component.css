@@ -1,0 +1,28 @@
+.imageProfilePhoto{
+    width: 100%;
+    border-radius: 100%;
+  }
+  
+  .lineReviews {
+    background-color: #00000012;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    padding-top: 30px ;
+  }
+  
+  .lineReviews p{
+    padding: 10px;
+  }
+  
+  textarea
+  {
+    width:100%;
+    resize: none;
+  }
+  
+  

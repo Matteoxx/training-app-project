@@ -1,0 +1,160 @@
+<div class="row">
+  <div class="col">
+ 
+      <form [formGroup]="registerDetailsForm" (ngSubmit)="onSubmit()" style="margin: 10px;">
+
+        <div class="row">
+          <div class="col-md-6">
+              <h3>Podstawowe wymiary</h3>
+              <div formGroupName="basic">
+            
+                <div class="form-row">
+                  <div class="form-group col-6 col-md-4">
+                    <label for="weight">Waga:</label>
+                    <input type="number" class="form-control" formControlName="weight" id="weight" required>
+                    <span
+                      *ngIf="registerDetailsForm.get('basic.weight').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span>  
+                  </div>
+          
+                  <div class="form-group col-6 col-md-4">
+                    <label for="height">Wzrost:</label>
+                    <input type="number" class="form-control" formControlName="height" id="height" required> 
+                    <span
+                      *ngIf="registerDetailsForm.get('basic.height').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span>  
+                  </div>
+                </div>
+
+                <p>Typ budowy ciała:</p>
+                <div class="form-row">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="ectomorph" class="custom-control-input" formControlName="build" value="ektomorfik">
+                      <label class="custom-control-label" for="ectomorph">Ektomorfik</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="endomorph" class="custom-control-input" formControlName="build" value="endomorfik">
+                      <label class="custom-control-label" for="endomorph">Endomorfik</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="mesomorph" class="custom-control-input" formControlName="build" value="mezomorfik">
+                      <label class="custom-control-label" for="mesomorph">Mezomorfik</label>
+                    </div>
+                </div>
+            
+              </div>
+          </div>
+          <div class="col-md-6 mx-auto">
+              <h3>Szczegółowe wymiary</h3>
+              <div formGroupName="extended">
+                <div class="form-row">
+                  <div class="form-group col-6 col-md-4">
+                    <label for="neck">Kark:</label>
+                    <input type="number" class="form-control" formControlName="neck" id="neck" required>
+                    <span
+                      *ngIf="registerDetailsForm.get('extended.neck').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span>   
+                  </div>
+                  <div class="form-group col-6 col-md-4">
+                    <label for="shoulder">Ramię:</label>
+                    <input type="number" class="form-control" formControlName="shoulder" id="shoulder" required> 
+                    <span
+                      *ngIf="registerDetailsForm.get('extended.shoulder').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span> 
+                  </div>
+                 
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6 col-md-4">
+                      <label for="waist">Talia:</label>
+                      <input type="number" class="form-control" formControlName="waist" id="waist" required> 
+                      <span
+                        *ngIf="registerDetailsForm.get('extended.waist').hasError('required') && formSubmitted" 
+                        class="help-block">
+                        To pole jest wymagane
+                      </span> 
+                    </div>
+                    <div class="form-group col-6 col-md-4">
+                      <label for="hips">Biodra:</label>
+                      <input type="number" class="form-control" formControlName="hips" id="hips" required> 
+                      <span
+                        *ngIf="registerDetailsForm.get('extended.hips').hasError('required') && formSubmitted" 
+                        class="help-block">
+                        To pole jest wymagane
+                      </span> 
+                    </div>
+                </div>
+              
+                <div class="form-row">
+                  
+                  <div class="form-group col-6 col-md-4">
+                    <label for="thigh">Udo:</label>
+                    <input type="number" class="form-control" formControlName="thigh" id="thigh" required> 
+                    <span
+                      *ngIf="registerDetailsForm.get('extended.thigh').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span> 
+                  </div>
+                  <div class="form-group col-6 col-md-4">
+                    <label for="chest">Klatka piersiowa:</label>
+                    <input type="number" class="form-control" formControlName="chest" id="chest" required>
+                    <span
+                      *ngIf="registerDetailsForm.get('extended.chest').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span>  
+                  </div>
+                </div>
+             
+                <div class="form-row">
+                  <div class="form-group col-6 col-md-4">
+                    <label for="forearm">Przedramię:</label>
+                    <input type="number" class="form-control" formControlName="forearm" id="forearm" required>
+                    <span
+                      *ngIf="registerDetailsForm.get('extended.forearm').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span>  
+                  </div>
+                  <div class="form-group col-6 col-md-4">
+                    <label for="calf">Łydka:</label>
+                    <input type="number" class="form-control" formControlName="calf" id="calf" required>
+                    <span
+                      *ngIf="registerDetailsForm.get('extended.calf').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span>  
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-6 col-md-4">
+                    <label for="ankle">Staw skokowy:</label>
+                    <input type="number" class="form-control" formControlName="ankle" id="ankle" required> 
+                    <span
+                      *ngIf="registerDetailsForm.get('extended.ankle').hasError('required') && formSubmitted" 
+                      class="help-block">
+                      To pole jest wymagane
+                    </span> 
+                  </div>
+                </div>
+           
+              </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Zapisz</button>
+      </form>
+  
+    </div>
+</div>
+

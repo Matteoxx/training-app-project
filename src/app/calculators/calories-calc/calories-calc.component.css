@@ -1,0 +1,9 @@
+.row {
+  background-image: url("../../../assets/img/imgCalories.jpg");
+  color: white;
+}
+
+h2, h5 {
+  margin: 0px;
+}
+
