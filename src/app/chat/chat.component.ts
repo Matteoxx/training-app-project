@@ -5,6 +5,15 @@ import { ChatService } from './chat.service';
 import { ChatMessage } from './chat.message.model';
 import { LoginResponse } from '../login.response.interface';
 import { LoginService } from '../login.service';
+import { Timestamp } from 'rxjs';
+
+interface MessageResponse{
+  content: string,
+  date: Date,
+  sender: string,
+  type: string,
+  photo: string
+}
 
 @Component({
   selector: 'app-chat',
@@ -48,16 +57,16 @@ export class ChatComponent implements OnInit, OnDestroy{
 
 
   sendMessage(event: Event) {
-
       var messageContent = this.messageInput.nativeElement.value.trim();
       if(messageContent && this.stompClient) {
           var chatMessage = {
               sender: this.sender,
+              photo: this.avatar,
               content: this.messageInput.nativeElement.value,
               date: new Date(),
               type: 'CHAT'
           };
-
+          
           this.stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
           this.messageInput.nativeElement.value = '';
       }
@@ -74,8 +83,8 @@ export class ChatComponent implements OnInit, OnDestroy{
     this.stompClient.connect({}, function(frame){
     
       _this.stompClient.subscribe('/topic/public', function (payload) {
-
-        var message = JSON.parse(payload.body);
+        
+        var message: MessageResponse = JSON.parse(payload.body);
         var messageElement = _this.renderer.createElement('li');
         var textElement = _this.renderer.createElement('p');
 
@@ -95,7 +104,7 @@ export class ChatComponent implements OnInit, OnDestroy{
 
             _this.renderer.addClass(messageElement, 'chat-message');
             var avatarElement = _this.renderer.createElement('img');
-            _this.renderer.setAttribute(avatarElement, 'src', _this.avatar);
+            _this.renderer.setAttribute(avatarElement, 'src', message.photo);
             _this.renderer.appendChild(messageElement, avatarElement);
             var usernameElement = _this.renderer.createElement('span');
             var usernameText = _this.renderer.createText(message.sender);
