@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { LoginService } from '../login.service';
+import { LoginService } from 'src/app/login.service';
 import { HttpClient } from '@angular/common/http';
-
 @Injectable({
   providedIn: 'root'
 })
-export class OpinionsService {
+export class OpinionsTrainersService {
 
   constructor(private loginService: LoginService, private httpClient: HttpClient) { }
 
@@ -29,9 +28,14 @@ export class OpinionsService {
   }
 
   getTrainerOpinion(id: number){
-    return this.httpClient.get('https://applicationfitness.herokuapp.com/opinion/trainer/' + id, 
+    return this.httpClient.get('https://applicationfitness.herokuapp.com/opinion/' + id, 
                         this.loginService.getHeaders()
                         );
+  }
+
+  getTrainersInfo(){
+    return this.httpClient.get('https://applicationfitness.herokuapp.com/employee/trainer/show', 
+                      this.loginService.getHeaders());
   }
 
 }

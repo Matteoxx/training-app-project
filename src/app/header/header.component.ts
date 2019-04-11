@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from '../login.service';
 import { LoginResponse } from '../login.response.interface';
