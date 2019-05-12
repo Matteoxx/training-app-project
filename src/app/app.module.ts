@@ -42,6 +42,7 @@ import { OpinionsTrainersService } from './opinions/opinions-trainers/opinions-t
 import { OpinionsTrainersListComponent } from './opinions/opinions-trainers/opinions-trainers-list/opinions-trainers-list.component';
 import { OpinionsTrainerDetailsComponent } from './opinions/opinions-trainers/opinions-trainer-details/opinions-trainer-details.component';
 import { OpinionsDietService } from './opinions/opinions-diets/opinions-diet.service';
+import { TrainingPlanComponent } from './training-plan/training-plan.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { OpinionsDietService } from './opinions/opinions-diets/opinions-diet.ser
     OpinionsDietsComponent,
     OpinionsTrainersComponent,
     OpinionsTrainersListComponent,
-    OpinionsTrainerDetailsComponent
+    OpinionsTrainerDetailsComponent,
+    TrainingPlanComponent
   ],
   imports: [
     BrowserModule,
