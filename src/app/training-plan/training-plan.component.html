@@ -1,3 +1,189 @@
-<p>
-  training-plan works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h2 class="text-center">
+        Dodaj nowy plan treningowy
+      </h2>
+
+      <form [formGroup]="trainingPlanForm">
+        <label for="period">Liczba dni:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="period"
+          formControlName="period"
+        /><br />
+        <label for="trainingPlanName">Nazwa planu:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="trainingPlanName"
+          formControlName="trainingPlanName"
+        /><br />
+        <label for="level">Poziom trudności:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="level"
+          formControlName="level"
+        /><br />
+        <label for="photo">Zdjęcie:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="photo"
+          formControlName="photo"
+        /><br />
+        <input type="submit" class="btn btn-primary" /><br />
+      </form>
+    </div>
+
+    <div class="col-md-6 mx-auto">
+      <mat-accordion *ngFor="let day of trainingDays; let i = index">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Dzień {{ i + 1 }} </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!-- START - Dodawanie i wyświetlanie rozgrzewki -->
+          <mat-accordion
+            *ngFor="let warmupExercise of warmupExercises; let i = index"
+          >
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  ROZGRZEWKA: ćwiczenie {{ i + 1 }}
+                  <!-- <mat-icon style="color: red;">clear</mat-icon> -->
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                  <mat-icon style="color: red;">clear</mat-icon>
+                </mat-panel-description> -->
+              </mat-expansion-panel-header>
+              <mat-form-field>
+                <mat-label>Nazwa ćwiczenia</mat-label>
+                <mat-select>
+                  <mat-option
+                    *ngFor="let warmupExerciseName of warmupExerciseNames"
+                    [value]="warmupExerciseName"
+                  >
+                    {{ warmupExerciseName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Liczba powtórzeń"
+                /> </mat-form-field
+              ><br />
+
+              <mat-form-field>
+                <input matInput placeholder="Liczba serii" />
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Obraz" />
+              </mat-form-field>
+              <br />
+              <button class="btn btn-danger" (click)="deleteWarmupExercise(i)">
+                Usuń
+              </button>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <!-- KONIEC - Dodawanie i wyświetlanie rozgrzewki -->
+
+          <!-- START - Wyswietlanie listy ćwiczeń w danym dniu treningowym -->
+          <mat-accordion *ngFor="let exercise of exercises; let i = index">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title
+                  >TRENING: ćwiczenie {{ i + 1 }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-form-field>
+                <mat-label>Nazwa ćwiczenia</mat-label>
+                <mat-select>
+                  <mat-option
+                    *ngFor="let exercise of exerciseNames"
+                    [value]="exerciseName"
+                  >
+                    {{ exercise }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Liczba powtórzeń"
+                /> </mat-form-field
+              ><br />
+
+              <mat-form-field>
+                <input matInput placeholder="Liczba serii" />
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Obraz" />
+              </mat-form-field>
+
+              <button
+                class="btn btn-danger"
+                (click)="deleteTrainingExercise(i)"
+              >
+                Usuń
+              </button>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <!-- KONIEC - Wyswietlanie listy ćwiczeń w danym dniu treningowym -->
+
+          <!-- START - Dodanie cardio -->
+          <mat-accordion
+            *ngFor="let cardioExercise of cardioExercises; let i = index"
+          >
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title
+                  >CARDIO: ćwiczenie {{ i + 1 }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-form-field>
+                <mat-label>Nazwa ćwiczenia</mat-label>
+                <mat-select>
+                  <mat-option
+                    *ngFor="let cardioExerciseName of cardioExerciseNames"
+                    [value]="cardioExerciseName"
+                  >
+                    {{ cardioExerciseName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Czas kardio" /> </mat-form-field
+              ><br />
+
+              <button class="btn btn-danger" (click)="deleteCardioExercise(i)">
+                Usuń
+              </button>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <!-- KONIEC - Dodanie cardio -->
+          <mat-action-row>
+            <button class="btn btn-primary my-1" (click)="addWarmup()">
+              Dodaj rozgrzewkę
+            </button>
+            <button class="btn btn-success my-1" (click)="addExercise()">
+              Dodaj ćwiczenie
+            </button>
+            <button class="btn btn-secondary my-1" (click)="addCardio($event)">
+              Dodaj kardio
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
