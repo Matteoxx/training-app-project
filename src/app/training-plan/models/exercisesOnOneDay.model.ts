@@ -1,11 +1,11 @@
 import { Exercise } from "./exercise.model";
+import { Cardio } from "./cardio.model";
 
 export class exercisesOnOneDay {
   constructor(
-    public warmupName: string,
-    public warmupTime: number,
-    public cardioName: string,
-    public cardioTime: number,
-    public exercises: Exercise[]
+    public dayNr: number,
+    public warmupExercises: Exercise[],
+    public exercises: Exercise[],
+    public cardio: Cardio
   ) {}
 }

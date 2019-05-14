@@ -1,6 +1,6 @@
 import { exercisesOnOneDay } from "./exercisesOnOneDay.model";
 
-export class trainingPlan {
+export class TrainingPlan {
   constructor(
     public period: number,
     public trainingPlanName: string,
