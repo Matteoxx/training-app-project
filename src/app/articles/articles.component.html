@@ -1,9 +1,115 @@
-<div><ol>
-  <li *ngFor="let news of sportArticles"><br>
-    <span id="title">{{ news.title }} </span><br>
-    <img src="{{news.photo}}" id="photo">
-    <span id="description">{{ news.description }}</span>
-    <br><br>    <br><br>     <br><br>
-  </li>
-</ol>
-</div>
+<section id="top" class="bg-dark px-2 py-2 mx-auto">
+  <div class="row">
+    <div class="col-md-6">
+      <a [href]="sportArticles[0].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[0].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[0].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6">
+      <a [href]="sportArticles[1].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[1].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[1].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="middle" class="px-2 py-2 bg-info">
+  <div class="row">
+    <div class="col-sm-6 col-md-3">
+      <a [href]="sportArticles[2].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[2].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[2].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <a [href]="sportArticles[3].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[3].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[3].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <a [href]="sportArticles[4].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[4].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[4].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <a [href]="sportArticles[5].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[5].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[5].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="middle" class="px-2 py-2 bg-info">
+  <div class="row">
+    <div class="col-md-3">
+      <a [href]="sportArticles[6].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[6].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[6].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a [href]="sportArticles[7].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[7].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[7].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a [href]="sportArticles[8].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[8].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[8].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a [href]="sportArticles[9].link | safeUrl" target="_blank">
+        <div class="card bg-dark text-white">
+          <img src="{{ sportArticles[9].photo }}" id="photo" class="card-img" />
+          <div class="card-img-overlay">
+            <h5 class="card-title" id="title">{{ sportArticles[9].title }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
