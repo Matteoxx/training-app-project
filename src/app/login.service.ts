@@ -92,6 +92,7 @@ export class LoginService {
       .subscribe(
         data => {
           localStorage.setItem("userData", JSON.stringify(data));
+          console.log(data);
 
           if (data.roles.includes("ROLE_EMPLOYEE")) {
             this.router.navigate(["/employee"]);
@@ -105,7 +106,9 @@ export class LoginService {
             this.role.next("ROLE_USER");
           }
         },
-        error => {}
+        error => {
+          console.log(error);
+        }
       );
   }
 
