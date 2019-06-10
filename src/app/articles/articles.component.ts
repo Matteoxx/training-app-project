@@ -8,15 +8,14 @@ import { ArticlesService } from "./articles.service";
   styleUrls: ["./articles.component.css"]
 })
 export class ArticlesComponent implements OnInit {
-  sportArticles: Articles;
+  sportArticles: Articles[];
 
   constructor(private articlesService: ArticlesService) {}
 
   ngOnInit() {
     this.articlesService.getSportArticles().subscribe(
-      (resp: Articles) => {
+      (resp: Articles[]) => {
         this.sportArticles = resp;
-        console.log(this.sportArticles);
       },
       (error: Error) => {}
     );
