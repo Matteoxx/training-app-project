@@ -1,36 +1,27 @@
-.card {
-  background-repeat: no-repeat;
+.row {
   background-image: url("../../assets/img/tlo_home.jpg");
-  width: 2100px;
-  height: 805px;
   color: white;
-  border: 0;
-  border-radius: 0;
+  height: 100vh;
 }
-.centerText1 {
-  margin-left: 450px;
+.text1 {
   font-family: Impact;
   font-size: 70px;
-  padding: 30px;
+  margin: 15px;
 }
-.centerText2 {
-  margin-left: 200px;
+.text2 {
   font-family: Marker Felt;
   font-size: 30px;
-  padding: 30px;
+  margin: 20px 0px 40px 0px;
 }
-.centerText3 {
-  margin-left: 600px;
-  padding: 30px;
+.text3 {
+  margin: 15px;
 }
-.centerText4 {
+.text4 {
   font-family: cursive;
   font-size: 30px;
-  margin-left: 150px;
+  margin: 40px 0px 0px 20px;
 }
-.centerText5 {
+.text5 {
   font-family: "Cambria Math";
   font-size: 30px;
-  margin-left: 980px;
 }
-
