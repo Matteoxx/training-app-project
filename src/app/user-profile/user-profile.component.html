@@ -1,0 +1,24 @@
+<div class="row pt-3">
+  <div class="col-12 col-sm-4 col-md-3 mb-3">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        [routerLink]="['/profile/userdata']"
+        style="cursor: pointer;"
+      >
+        Twój profil
+      </li>
+      <li
+        class="list-group-item"
+        [routerLink]="['/profile/measurements']"
+        style="cursor: pointer;"
+      >
+        Historia pomiarów
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-12 col-sm-8 col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

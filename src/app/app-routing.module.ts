@@ -17,12 +17,26 @@ import { OpinionsDietsComponent } from "./opinions/opinions-diets/opinions-diets
 import { OpinionsTrainersComponent } from "./opinions/opinions-trainers/opinions-trainers.component";
 import { OpinionsTrainerDetailsComponent } from "./opinions/opinions-trainers/opinions-trainer-details/opinions-trainer-details.component";
 import { TrainingPlanComponent } from "./training-plan/training-plan.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { UserdataPanelComponent } from "./user-profile/userdata-panel/userdata-panel.component";
+import { MeasurementsPanelComponent } from "./user-profile/measurements-panel/measurements-panel.component";
 
 //zabezpieczyc sciezki
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
+  {
+    path: "profile",
+    component: UserProfileComponent,
+    children: [
+      { path: "userdata", component: UserdataPanelComponent },
+      {
+        path: "measurements",
+        component: MeasurementsPanelComponent
+      }
+    ]
+  },
   { path: "details", component: RegisterDetailsComponent },
   { path: "home", component: HomeComponent },
   { path: "programmes", component: ProgrammesComponent },
