@@ -10,8 +10,8 @@
             
                 <div class="form-row">
                   <div class="form-group col-6 col-md-4">
-                    <label for="weight">Waga:</label>
-                    <input type="number" class="form-control" formControlName="weight" id="weight" required>
+                    <!-- <label for="weight">Waga:</label> -->
+                    <input type="number" class="form-control" formControlName="weight" id="weight" required placeholder="waga">
                     <span
                       *ngIf="registerDetailsForm.get('basic.weight').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -20,8 +20,8 @@
                   </div>
           
                   <div class="form-group col-6 col-md-4">
-                    <label for="height">Wzrost:</label>
-                    <input type="number" class="form-control" formControlName="height" id="height" required> 
+                    <!-- <label for="height">Wzrost:</label> -->
+                    <input type="number" class="form-control" formControlName="height" id="height" required placeholder="wzrost"> 
                     <span
                       *ngIf="registerDetailsForm.get('basic.height').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -31,7 +31,7 @@
                 </div>
 
                 <p>Typ budowy ciała:</p>
-                <div class="form-row">
+                <div class="form-row mb-3">
                     <div class="custom-control custom-radio custom-control-inline">
                       <input type="radio" id="ectomorph" class="custom-control-input" formControlName="build" value="ektomorfik">
                       <label class="custom-control-label" for="ectomorph">Ektomorfik</label>
@@ -53,8 +53,8 @@
               <div formGroupName="extended">
                 <div class="form-row">
                   <div class="form-group col-6 col-md-4">
-                    <label for="neck">Kark:</label>
-                    <input type="number" class="form-control" formControlName="neck" id="neck" required>
+                    <!-- <label for="neck">Kark:</label> -->
+                    <input type="number" class="form-control" formControlName="neck" id="neck" required placeholder="kark">
                     <span
                       *ngIf="registerDetailsForm.get('extended.neck').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -62,8 +62,8 @@
                     </span>   
                   </div>
                   <div class="form-group col-6 col-md-4">
-                    <label for="shoulder">Ramię:</label>
-                    <input type="number" class="form-control" formControlName="shoulder" id="shoulder" required> 
+                    <!-- <label for="shoulder">Ramię:</label> -->
+                    <input type="number" class="form-control" formControlName="shoulder" id="shoulder" required placeholder="ramię"> 
                     <span
                       *ngIf="registerDetailsForm.get('extended.shoulder').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -75,8 +75,8 @@
 
                 <div class="form-row">
                     <div class="form-group col-6 col-md-4">
-                      <label for="waist">Talia:</label>
-                      <input type="number" class="form-control" formControlName="waist" id="waist" required> 
+                      <!-- <label for="waist">Talia:</label> -->
+                      <input type="number" class="form-control" formControlName="waist" id="waist" required placeholder="talia"> 
                       <span
                         *ngIf="registerDetailsForm.get('extended.waist').hasError('required') && formSubmitted" 
                         class="help-block">
@@ -84,8 +84,8 @@
                       </span> 
                     </div>
                     <div class="form-group col-6 col-md-4">
-                      <label for="hips">Biodra:</label>
-                      <input type="number" class="form-control" formControlName="hips" id="hips" required> 
+                      <!-- <label for="hips">Biodra:</label> -->
+                      <input type="number" class="form-control" formControlName="hips" id="hips" required placeholder="biodro"> 
                       <span
                         *ngIf="registerDetailsForm.get('extended.hips').hasError('required') && formSubmitted" 
                         class="help-block">
@@ -97,8 +97,8 @@
                 <div class="form-row">
                   
                   <div class="form-group col-6 col-md-4">
-                    <label for="thigh">Udo:</label>
-                    <input type="number" class="form-control" formControlName="thigh" id="thigh" required> 
+                    <!-- <label for="thigh">Udo:</label> -->
+                    <input type="number" class="form-control" formControlName="thigh" id="thigh" required placeholder="udo"> 
                     <span
                       *ngIf="registerDetailsForm.get('extended.thigh').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -106,8 +106,8 @@
                     </span> 
                   </div>
                   <div class="form-group col-6 col-md-4">
-                    <label for="chest">Klatka piersiowa:</label>
-                    <input type="number" class="form-control" formControlName="chest" id="chest" required>
+                    <!-- <label for="chest">Klatka piersiowa:</label> -->
+                    <input type="number" class="form-control" formControlName="chest" id="chest" required placeholder="klatka">
                     <span
                       *ngIf="registerDetailsForm.get('extended.chest').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -118,8 +118,8 @@
              
                 <div class="form-row">
                   <div class="form-group col-6 col-md-4">
-                    <label for="forearm">Przedramię:</label>
-                    <input type="number" class="form-control" formControlName="forearm" id="forearm" required>
+                    <!-- <label for="forearm">Przedramię:</label> -->
+                    <input type="number" class="form-control" formControlName="forearm" id="forearm" required placeholder="przedramię">
                     <span
                       *ngIf="registerDetailsForm.get('extended.forearm').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -127,8 +127,8 @@
                     </span>  
                   </div>
                   <div class="form-group col-6 col-md-4">
-                    <label for="calf">Łydka:</label>
-                    <input type="number" class="form-control" formControlName="calf" id="calf" required>
+                    <!-- <label for="calf">Łydka:</label> -->
+                    <input type="number" class="form-control" formControlName="calf" id="calf" required placeholder="łydka">
                     <span
                       *ngIf="registerDetailsForm.get('extended.calf').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -139,8 +139,8 @@
 
                 <div class="form-row">
                   <div class="form-group col-6 col-md-4">
-                    <label for="ankle">Staw skokowy:</label>
-                    <input type="number" class="form-control" formControlName="ankle" id="ankle" required> 
+                    <!-- <label for="ankle">Staw skokowy:</label> -->
+                    <input type="number" class="form-control" formControlName="ankle" id="ankle" required placeholder="staw skokowy"> 
                     <span
                       *ngIf="registerDetailsForm.get('extended.ankle').hasError('required') && formSubmitted" 
                       class="help-block">
@@ -148,11 +148,15 @@
                     </span> 
                   </div>
                 </div>
+                <div class="form-row">
+                  <div class="form-group col-6 col-md-4">
+                    <button type="submit" class="btn btn-success">Zapisz</button>
+                  </div>
+                </div>
            
               </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-success">Zapisz</button>
       </form>
   
     </div>

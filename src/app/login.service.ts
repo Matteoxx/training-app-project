@@ -92,7 +92,6 @@ export class LoginService {
       .subscribe(
         data => {
           localStorage.setItem("userData", JSON.stringify(data));
-          console.log(data);
 
           if (data.roles.includes("ROLE_EMPLOYEE")) {
             this.router.navigate(["/employee"]);
@@ -122,6 +121,13 @@ export class LoginService {
     return this.httpClient.get(
       "https://applicationfitness.herokuapp.com/news/show",
       this.getHeaders()
+    );
+  }
+
+  getLoggedUserInfo() {
+    return this.httpClient.get(
+      "https://applicationfitness.herokuapp.com/user/show/info",
+      this.getHeadersWithToken()
     );
   }
 }

@@ -46,6 +46,9 @@ import { TrainingPlanComponent } from "./training-plan/training-plan.component";
 import { SafeUrlPipe } from "./articles/safe-url-pipe.pipe";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatSelectModule } from "@angular/material/select";
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserdataPanelComponent } from './user-profile/userdata-panel/userdata-panel.component';
+import { MeasurementsPanelComponent } from './user-profile/measurements-panel/measurements-panel.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,10 @@ import { MatSelectModule } from "@angular/material/select";
     OpinionsTrainersListComponent,
     OpinionsTrainerDetailsComponent,
     TrainingPlanComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    UserProfileComponent,
+    UserdataPanelComponent,
+    MeasurementsPanelComponent
   ],
   imports: [
     BrowserModule,

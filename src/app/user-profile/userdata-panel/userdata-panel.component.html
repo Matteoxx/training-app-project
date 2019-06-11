@@ -1,0 +1,45 @@
+<h3>Twój Profil</h3>
+<hr />
+
+<table class="table table-borderless">
+  <tbody>
+    <tr>
+      <td class="font-weight-bold">Avatar</td>
+      <td>
+        <img
+          [src]="userdata.photo"
+          class="img-fluid"
+          alt=""
+          width="200"
+          height="200"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Nazwa użytkownika</td>
+      <td>{{ username }}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Adres email</td>
+      <td>{{ userdata.email }}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Płeć</td>
+      <td>{{ userdata.gender }}</td>
+    </tr>
+    <tr>
+      <td class="font-weight-bold">Imię</td>
+      <td>{{ userdata.firstName }}</td>
+    </tr>
+
+    <tr>
+      <td class="font-weight-bold">Nazwisko</td>
+      <td>{{ userdata.lastName }}</td>
+    </tr>
+
+    <tr>
+      <td class="font-weight-bold">Data urodzenia</td>
+      <td>{{ userdata.dateOfBirth | date: "shortDate" }}</td>
+    </tr>
+  </tbody>
+</table>
