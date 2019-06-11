@@ -1,13 +1,35 @@
 <ul>
-  <li *ngFor="let opinion of opinions">
-    <img [src]="opinion.photo" width="75px" height="75px"><br>
-    {{opinion.date | date: 'dd-MM-yyyy HH:mm' }} <br>
-    {{opinion.username}} <br>
-    {{opinion.message}} <br>
-  </li>
+  <div *ngFor="let opinion of opinions">
+    <div class="row my-3" >
+      <div class="col-1">
+        <img class="mx-auto" [src]="opinion.photo" width="100px" height="100px"><br>
+      </div>
+      <div class="col-11">
+        <div class="row">
+          <div class="col-9">
+            <h4>{{opinion.username}}</h4>
+          </div>
+          <div class="col-3">
+            {{opinion.date | date: 'dd-MM-yyyy HH:mm' }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            {{opinion.message}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
   <form [formGroup]="opinionForm" (ngSubmit)="addOpinion()">
-    <input type="text" class="form-control" formControlName="opinion">
-    <button type="submit" class="btn btn-primary" [disabled]="!opinionForm.valid">Add opinion</button>
+    <div class="row">
+      <div class="col-10">
+        <input type="text"  class="form-control" formControlName="opinion">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success my-2" [disabled]="!opinionForm.valid">Add opinion</button>
   </form>
 </ul>
 
