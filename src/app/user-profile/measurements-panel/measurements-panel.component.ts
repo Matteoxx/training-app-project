@@ -11,16 +11,18 @@ import { Measurement } from "src/app/register-details/measurement.model";
 export class MeasurementsPanelComponent implements OnInit {
   constructor(private userProfileService: UserProfileService) {}
 
-  measurements: any = [];
   formSubmitted = false;
+  data = {};
 
   addMeasurementForm: FormGroup;
+
+  showAddMeasurements = false;
 
   ngOnInit() {
     this.userProfileService.getMeasurements().subscribe(
       (data: {}) => {
-        console.log(data);
-        this.measurements = data;
+        this.data = data;
+        console.log(this.data);
       },
       (err: Error) => {
         console.log(err);
@@ -28,22 +30,16 @@ export class MeasurementsPanelComponent implements OnInit {
     );
 
     this.addMeasurementForm = new FormGroup({
-      basic: new FormGroup({
-        build: new FormControl("ektomorfik", Validators.required),
-        weight: new FormControl("", Validators.required),
-        height: new FormControl("", Validators.required)
-      }),
-      extended: new FormGroup({
-        neck: new FormControl("", Validators.required),
-        shoulder: new FormControl("", Validators.required),
-        waist: new FormControl("", Validators.required),
-        hips: new FormControl("", Validators.required),
-        thigh: new FormControl("", Validators.required),
-        chest: new FormControl("", Validators.required),
-        forearm: new FormControl("", Validators.required),
-        calf: new FormControl("", Validators.required),
-        ankle: new FormControl("", Validators.required)
-      })
+      weight: new FormControl("", Validators.required),
+      neck: new FormControl("", Validators.required),
+      shoulder: new FormControl("", Validators.required),
+      waist: new FormControl("", Validators.required),
+      hips: new FormControl("", Validators.required),
+      thigh: new FormControl("", Validators.required),
+      chest: new FormControl("", Validators.required),
+      forearm: new FormControl("", Validators.required),
+      calf: new FormControl("", Validators.required),
+      ankle: new FormControl("", Validators.required)
     });
   }
 
@@ -57,52 +53,52 @@ export class MeasurementsPanelComponent implements OnInit {
           new Measurement(
             "weight",
             "0",
-            this.addMeasurementForm.controls.basic.value.weight
+            this.addMeasurementForm.controls.weight.value
           ),
           new Measurement(
             "neck",
             "0",
-            this.addMeasurementForm.controls.extended.value.neck
+            this.addMeasurementForm.controls.neck.value
           ),
           new Measurement(
             "shoulder",
             "0",
-            this.addMeasurementForm.controls.extended.value.shoulder
+            this.addMeasurementForm.controls.shoulder.value
           ),
           new Measurement(
             "waist",
             "0",
-            this.addMeasurementForm.controls.extended.value.waist
+            this.addMeasurementForm.controls.waist.value
           ),
           new Measurement(
             "hips",
             "0",
-            this.addMeasurementForm.controls.extended.value.hips
+            this.addMeasurementForm.controls.hips.value
           ),
           new Measurement(
             "thigh",
             "0",
-            this.addMeasurementForm.controls.extended.value.neck
+            this.addMeasurementForm.controls.neck.value
           ),
           new Measurement(
             "chest",
             "0",
-            this.addMeasurementForm.controls.extended.value.chest
+            this.addMeasurementForm.controls.chest.value
           ),
           new Measurement(
             "forearm",
             "0",
-            this.addMeasurementForm.controls.extended.value.forearm
+            this.addMeasurementForm.controls.forearm.value
           ),
           new Measurement(
             "calf",
             "0",
-            this.addMeasurementForm.controls.extended.value.calf
+            this.addMeasurementForm.controls.calf.value
           ),
           new Measurement(
             "ankle",
             "0",
-            this.addMeasurementForm.controls.extended.value.ankle
+            this.addMeasurementForm.controls.ankle.value
           )
         ]
       };

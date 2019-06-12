@@ -1,11 +1,40 @@
-<!-- <p *ngIf="measurements.length === 0">
-  Brak pomiarów
-</p> -->
-<form [formGroup]="addMeasurementForm" (ngSubmit)="onSubmit()">
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Podstawowe wymiary</h3>
-      <div formGroupName="basic">
+<h3>Twoje pomiary</h3>
+<hr />
+
+<div *ngIf="data.measurements.length !== 0">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ostatni pomiar
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ data.date | date: "shortDate" }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <table class="table table-borderless">
+        <tbody>
+          <tr *ngFor="let bodyPart of data.measurements">
+            <td class="font-weight-bold">{{ bodyPart.name }}</td>
+            <td>{{ bodyPart.size }} cm</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<div *ngIf="!showAddMeasurements">
+  <button class="btn btn-primary my-2" (click)="showAddMeasurements = true">
+    Dodaj pomiar
+  </button>
+</div>
+
+<div *ngIf="showAddMeasurements">
+  <form [formGroup]="addMeasurementForm" (ngSubmit)="onSubmit()">
+    <div class="row mt-3">
+      <div class="col">
         <div class="form-row">
           <div class="form-group col-6 col-md-4">
             <label for="weight">Waga:</label>
@@ -18,7 +47,7 @@
             />
             <span
               *ngIf="
-                addMeasurementForm.get('basic.weight').hasError('required') &&
+                addMeasurementForm.get('weight').hasError('required') &&
                 formSubmitted
               "
               class="help-block"
@@ -27,72 +56,6 @@
             </span>
           </div>
 
-          <div class="form-group col-6 col-md-4">
-            <label for="height">Wzrost:</label>
-            <input
-              type="number"
-              class="form-control"
-              formControlName="height"
-              id="height"
-              required
-            />
-            <span
-              *ngIf="
-                addMeasurementForm.get('basic.height').hasError('required') &&
-                formSubmitted
-              "
-              class="help-block"
-            >
-              To pole jest wymagane
-            </span>
-          </div>
-        </div>
-
-        <p>Typ budowy ciała:</p>
-        <div class="form-row">
-          <div class="custom-control custom-radio custom-control-inline">
-            <input
-              type="radio"
-              id="ectomorph"
-              class="custom-control-input"
-              formControlName="build"
-              value="ektomorfik"
-            />
-            <label class="custom-control-label" for="ectomorph"
-              >Ektomorfik</label
-            >
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input
-              type="radio"
-              id="endomorph"
-              class="custom-control-input"
-              formControlName="build"
-              value="endomorfik"
-            />
-            <label class="custom-control-label" for="endomorph"
-              >Endomorfik</label
-            >
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input
-              type="radio"
-              id="mesomorph"
-              class="custom-control-input"
-              formControlName="build"
-              value="mezomorfik"
-            />
-            <label class="custom-control-label" for="mesomorph"
-              >Mezomorfik</label
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 mx-auto">
-      <h3>Szczegółowe wymiary</h3>
-      <div formGroupName="extended">
-        <div class="form-row">
           <div class="form-group col-6 col-md-4">
             <label for="neck">Kark:</label>
             <input
@@ -104,7 +67,7 @@
             />
             <span
               *ngIf="
-                addMeasurementForm.get('extended.neck').hasError('required') &&
+                addMeasurementForm.get('neck').hasError('required') &&
                 formSubmitted
               "
               class="help-block"
@@ -112,6 +75,8 @@
               To pole jest wymagane
             </span>
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group col-6 col-md-4">
             <label for="shoulder">Ramię:</label>
             <input
@@ -123,9 +88,28 @@
             />
             <span
               *ngIf="
-                addMeasurementForm
-                  .get('extended.shoulder')
-                  .hasError('required') && formSubmitted
+                addMeasurementForm.get('shoulder').hasError('required') &&
+                formSubmitted
+              "
+              class="help-block"
+            >
+              To pole jest wymagane
+            </span>
+          </div>
+
+          <div class="form-group col-6 col-md-4">
+            <label for="hips">Biodra:</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="hips"
+              id="hips"
+              required
+            />
+            <span
+              *ngIf="
+                addMeasurementForm.get('hips').hasError('required') &&
+                formSubmitted
               "
               class="help-block"
             >
@@ -146,7 +130,7 @@
             />
             <span
               *ngIf="
-                addMeasurementForm.get('extended.waist').hasError('required') &&
+                addMeasurementForm.get('waist').hasError('required') &&
                 formSubmitted
               "
               class="help-block"
@@ -154,28 +138,7 @@
               To pole jest wymagane
             </span>
           </div>
-          <div class="form-group col-6 col-md-4">
-            <label for="hips">Biodra:</label>
-            <input
-              type="number"
-              class="form-control"
-              formControlName="hips"
-              id="hips"
-              required
-            />
-            <span
-              *ngIf="
-                addMeasurementForm.get('extended.hips').hasError('required') &&
-                formSubmitted
-              "
-              class="help-block"
-            >
-              To pole jest wymagane
-            </span>
-          </div>
-        </div>
 
-        <div class="form-row">
           <div class="form-group col-6 col-md-4">
             <label for="thigh">Udo:</label>
             <input
@@ -187,7 +150,7 @@
             />
             <span
               *ngIf="
-                addMeasurementForm.get('extended.thigh').hasError('required') &&
+                addMeasurementForm.get('thigh').hasError('required') &&
                 formSubmitted
               "
               class="help-block"
@@ -195,6 +158,9 @@
               To pole jest wymagane
             </span>
           </div>
+        </div>
+
+        <div class="form-row">
           <div class="form-group col-6 col-md-4">
             <label for="chest">Klatka piersiowa:</label>
             <input
@@ -206,7 +172,7 @@
             />
             <span
               *ngIf="
-                addMeasurementForm.get('extended.chest').hasError('required') &&
+                addMeasurementForm.get('chest').hasError('required') &&
                 formSubmitted
               "
               class="help-block"
@@ -214,9 +180,7 @@
               To pole jest wymagane
             </span>
           </div>
-        </div>
 
-        <div class="form-row">
           <div class="form-group col-6 col-md-4">
             <label for="forearm">Przedramię:</label>
             <input
@@ -228,27 +192,7 @@
             />
             <span
               *ngIf="
-                addMeasurementForm
-                  .get('extended.forearm')
-                  .hasError('required') && formSubmitted
-              "
-              class="help-block"
-            >
-              To pole jest wymagane
-            </span>
-          </div>
-          <div class="form-group col-6 col-md-4">
-            <label for="calf">Łydka:</label>
-            <input
-              type="number"
-              class="form-control"
-              formControlName="calf"
-              id="calf"
-              required
-            />
-            <span
-              *ngIf="
-                addMeasurementForm.get('extended.calf').hasError('required') &&
+                addMeasurementForm.get('forearm').hasError('required') &&
                 formSubmitted
               "
               class="help-block"
@@ -260,6 +204,26 @@
 
         <div class="form-row">
           <div class="form-group col-6 col-md-4">
+            <label for="calf">Łydka:</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="calf"
+              id="calf"
+              required
+            />
+            <span
+              *ngIf="
+                addMeasurementForm.get('calf').hasError('required') &&
+                formSubmitted
+              "
+              class="help-block"
+            >
+              To pole jest wymagane
+            </span>
+          </div>
+
+          <div class="form-group col-6 col-md-4">
             <label for="ankle">Staw skokowy:</label>
             <input
               type="number"
@@ -270,7 +234,7 @@
             />
             <span
               *ngIf="
-                addMeasurementForm.get('extended.ankle').hasError('required') &&
+                addMeasurementForm.get('ankle').hasError('required') &&
                 formSubmitted
               "
               class="help-block"
@@ -281,6 +245,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Dodaj nowy pomiar</button>
-</form>
+    <button type="submit" class="btn btn-success">Zapisz</button>
+  </form>
+</div>
