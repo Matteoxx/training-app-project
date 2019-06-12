@@ -1,28 +1,36 @@
 <div class="m-3">
   <ul class="list-group">
-    <li *ngFor="let trainer of trainersInfo" class="list-group-item" (click)="showTrainerDetails(trainer.trainerId)"
-        style="cursor: pointer;">
+    <li
+      *ngFor="let trainer of trainersInfo"
+      class="list-group-item"
+      (click)="showTrainerDetails(trainer.trainerId)"
+      style="cursor: pointer;"
+    >
       <div class="row">
-        <div class="col-4">
-          <img [src]="trainer.photo" class="imageTrainer" width="110px" height="110px">
-        </div>
-        <div class="col-8">
-          <div class="row">
-            <div class="col m-3 trainerDescription">
-              {{trainer.firstName}}
-              {{trainer.lastName}}
+        <div class="row">
+          <div class="col-4">
+            <img
+              [src]="trainer.photo"
+              class="imageTrainer"
+              width="75px"
+              height="75px"
+            />
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col m-3 trainerDescription">
+                {{ trainer.firstName }}
+                {{ trainer.lastName }}
+              </div>
             </div>
           </div>
           <div class="row">
-            Specjalność: {{trainer.speciality}}
+            <div class="col mx-4 justify-content-center">
+              Specjalność: {{ trainer.speciality }}
+            </div>
           </div>
-
-
         </div>
       </div>
-
-
     </li>
   </ul>
 </div>
-

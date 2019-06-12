@@ -7,9 +7,11 @@
   <div class="col-8 mx-auto">
     <div class="row my-3 mx-auto">
       <div class="col-4 col-md-2 mx-auto">
-        <img class="imageProfilePhoto"
-             src="https://girlboss.in/wp-content/uploads/2019/01/magdalena_rogacka_coach_trener_businessiq_profilowe-1-600x600.jpg"
-             alt="image">
+        <img
+          class="imageProfilePhoto"
+          src="https://girlboss.in/wp-content/uploads/2019/01/magdalena_rogacka_coach_trener_businessiq_profilowe-1-600x600.jpg"
+          alt="image"
+        />
       </div>
       <div class="col-8 col-md-9 mx-auto lineReviews">
         <p>Dieta jest oki</p>
@@ -17,9 +19,11 @@
     </div>
     <div class="row my-3 mx-auto">
       <div class="col-4 col-md-2 mx-auto">
-        <img class="imageProfilePhoto"
-             src="https://girlboss.in/wp-content/uploads/2019/01/magdalena_rogacka_coach_trener_businessiq_profilowe-1-600x600.jpg"
-             alt="image">
+        <img
+          class="imageProfilePhoto"
+          src="https://girlboss.in/wp-content/uploads/2019/01/magdalena_rogacka_coach_trener_businessiq_profilowe-1-600x600.jpg"
+          alt="image"
+        />
       </div>
       <div class="col-8 col-md-9 mx-auto lineReviews">
         <p>Dieta jest oki</p>
@@ -27,37 +31,47 @@
     </div>
     <div class="row my-3 mx-auto">
       <div class="col-4 col-md-2 mx-auto">
-        <img class="imageProfilePhoto"
-             src="https://girlboss.in/wp-content/uploads/2019/01/magdalena_rogacka_coach_trener_businessiq_profilowe-1-600x600.jpg"
-             alt="image">
+        <img
+          class="imageProfilePhoto"
+          src="https://girlboss.in/wp-content/uploads/2019/01/magdalena_rogacka_coach_trener_businessiq_profilowe-1-600x600.jpg"
+          alt="image"
+        />
       </div>
       <div class="col-8 col-md-9 mx-auto lineReviews">
         <p>Dieta jest oki</p>
+      </div>
+    </div>
+
+    <div class="row my-3 mx-auto" *ngFor="let opinion of opinions">
+      <div class="col-4 col-md-2 mx-auto">
+        <img class="imageProfilePhoto" [src]="opinion.photo" />
+      </div>
+      <div class="col-8 col-md-9 mx-auto lineReviews">
+        <p>{{ opinion.message }}</p>
       </div>
     </div>
   </div>
-
-
 </div>
-<div class="row ">
-  <div class="col-9 mx-auto">
+<div *ngIf="showAddOpinion">
+  <form
+    [formGroup]="opinionsDietForm"
+    (ngSubmit)="addOpinion()"
+    class="mx-auto"
+  >
+    <div class="row">
+      <div class="col-9 mx-auto">
+        <textarea
+          cols="2"
+          rows="5"
+          id="rules"
+          formControlName="opinion"
+          placeholder="Twoja opinia..."
+        ></textarea>
 
-
-    <form [formGroup]="opinionsDietForm" (ngSubmit)="addOpinion()">
-      <div class="row">
-        <textarea cols="2" rows="5" id="rules" formControlName="opinion" placeholder="Napsiz swoją opinie ..."></textarea>
+        <button type="submit" class="btn btn-success my-2">
+          Dodaj opinię
+        </button>
       </div>
-      <div class="col">
-        <div class="row">
-          <div class="col-3 align-self-end">
-            <button type="submit" class="btn btn-success my-2">Wyślij</button>
-          </div>
-        </div>
-      </div>
-
-
-
-
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

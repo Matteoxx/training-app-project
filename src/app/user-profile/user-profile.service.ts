@@ -10,7 +10,7 @@ export class UserProfileService {
 
   getMeasurements() {
     return this.http.get(
-      "https://applicationfitness.herokuapp.com/measurements/last/five/show",
+      "https://applicationfitness.herokuapp.com/measurements/last/one/show",
       this.loginService.getHeadersWithToken()
     );
   }

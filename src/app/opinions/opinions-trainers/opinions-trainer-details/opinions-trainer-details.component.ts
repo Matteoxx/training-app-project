@@ -1,64 +1,73 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { OpinionsTrainersService } from '../opinions-trainers.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { TrainerOpinion } from '../trainer.opinion.model';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { OpinionsTrainersService } from "../opinions-trainers.service";
+import { ActivatedRoute, Params } from "@angular/router";
+import { Subscription } from "rxjs";
+import { TrainerOpinion } from "../trainer.opinion.model";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { LoginService } from "src/app/login.service";
 
 @Component({
-  selector: 'app-opinions-trainer-details',
-  templateUrl: './opinions-trainer-details.component.html',
-  styleUrls: ['./opinions-trainer-details.component.css']
+  selector: "app-opinions-trainer-details",
+  templateUrl: "./opinions-trainer-details.component.html",
+  styleUrls: ["./opinions-trainer-details.component.css"]
 })
 export class OpinionsTrainerDetailsComponent implements OnInit, OnDestroy {
-
   subscription: Subscription;
   trainerId: number;
   opinions: TrainerOpinion[];
   opinionForm: FormGroup;
 
-  constructor(private opinionsTrainersDietsService: OpinionsTrainersService, 
-              private route: ActivatedRoute) {}
+  showAddOpinion = false;
+
+  constructor(
+    private loginService: LoginService,
+    private opinionsTrainersDietsService: OpinionsTrainersService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    let userdata = this.loginService.getLoggedUserData();
+    if (userdata && userdata.roles.includes("ROLE_USER")) {
+      this.showAddOpinion = true;
+    }
 
     this.opinionForm = new FormGroup({
-      opinion: new FormControl('', Validators.required)
-    })
+      opinion: new FormControl("", Validators.required)
+    });
 
-    this.subscription = this.route.params.subscribe(
-      (params: Params) => {
-        this.trainerId = +params['id'];
-        this.opinionsTrainersDietsService.getTrainerOpinion(this.trainerId).subscribe(
+    this.subscription = this.route.params.subscribe((params: Params) => {
+      this.trainerId = +params["id"];
+      this.opinionsTrainersDietsService
+        .getTrainerOpinion(this.trainerId)
+        .subscribe(
           (resp: TrainerOpinion[]) => {
             this.opinions = resp;
           },
           (error: Error) => {
             console.log(error);
           }
-        )
-      }
-    )
-  
+        );
+    });
   }
 
-  addOpinion(){
-    this.opinionsTrainersDietsService.addTrainerOpinion(this.trainerId, this.opinionForm.controls['opinion'].value).subscribe(
-      (resp: Response) => {
-        console.log(resp);
-        this.opinionForm.reset();
-      },
-      (error: Error) => {
-        console.log(error);
-      }
-    )
+  addOpinion() {
+    this.opinionsTrainersDietsService
+      .addTrainerOpinion(
+        this.trainerId,
+        this.opinionForm.controls["opinion"].value
+      )
+      .subscribe(
+        (resp: Response) => {
+          console.log(resp);
+          this.opinionForm.reset();
+        },
+        (error: Error) => {
+          console.log(error);
+        }
+      );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-  
-
-
 }

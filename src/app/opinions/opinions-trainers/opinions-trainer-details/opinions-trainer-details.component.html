@@ -1,35 +1,46 @@
 <ul>
   <div *ngFor="let opinion of opinions">
-    <div class="row my-3" >
-      <div class="col-1">
-        <img class="mx-auto" [src]="opinion.photo" width="100px" height="100px"><br>
+    <div class="row my-3">
+      <div class="col-2">
+        <img
+          class="mx-auto"
+          [src]="opinion.photo"
+          width="100px"
+          height="100px"
+        /><br />
       </div>
-      <div class="col-11">
+      <div class="col-10">
         <div class="row">
           <div class="col-9">
-            <h4>{{opinion.username}}</h4>
+            <p>{{ opinion.username }}</p>
           </div>
           <div class="col-3">
-            {{opinion.date | date: 'dd-MM-yyyy HH:mm' }}
+            {{ opinion.date | date: "dd-MM-yyyy" }}
           </div>
         </div>
         <div class="row">
           <div class="col">
-            {{opinion.message}}
+            {{ opinion.message }}
           </div>
         </div>
       </div>
     </div>
-
   </div>
-  <form [formGroup]="opinionForm" (ngSubmit)="addOpinion()">
-    <div class="row">
-      <div class="col-10">
-        <input type="text"  class="form-control" formControlName="opinion">
+  <div *ngIf="showAddOpinion">
+    <form [formGroup]="opinionForm" (ngSubmit)="addOpinion()">
+      <div class="row">
+        <div class="col-10">
+          <input type="text" class="form-control" formControlName="opinion" />
+        </div>
       </div>
-    </div>
 
-    <button type="submit" class="btn btn-success my-2" [disabled]="!opinionForm.valid">Add opinion</button>
-  </form>
+      <button
+        type="submit"
+        class="btn btn-primary my-2"
+        [disabled]="!opinionForm.valid"
+      >
+        Dodaj opinię
+      </button>
+    </form>
+  </div>
 </ul>
-

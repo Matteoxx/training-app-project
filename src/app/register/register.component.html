@@ -1,139 +1,145 @@
-<div class="row my-4 justify-content-center ">
-  <div class="col-10 mx-auto my-auto col-md-5 my-5 mx-5">
-    <div class="registerDiv">
-      <h1>Rejestracja</h1>
-      <h4>Wypełnij formularz, aby założyć konto</h4>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div style="margin-top: 15px;">
-          <mat-radio-group
-            aria-label="Select an option"
-            formControlName="gender"
-          >
-            <mat-radio-button style="margin-right: 15px;" value="Kobieta"
-              >Kobieta</mat-radio-button
+<div class="container">
+  <div class="row my-4 justify-content-center ">
+    <div class="col-10 mx-auto my-auto col-md-5 my-5 mx-5">
+      <div class="registerDiv">
+        <h1>Rejestracja</h1>
+        <h4>Wypełnij formularz, aby założyć konto</h4>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div style="margin-top: 15px;">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="gender"
             >
-            <mat-radio-button value="Mężczyzna">Mężczyzna</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              type="text"
-              placeholder="Imię"
-              formControlName="firstName"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              type="text"
-              placeholder="Nazwisko"
-              formControlName="lastName"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              type="text"
-              placeholder="Nazwa użytkownika"
-              formControlName="username"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              type="email"
-              placeholder="E-mail"
-              formControlName="email"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              type="password"
-              placeholder="Hasło"
-              formControlName="pass"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              type="password"
-              placeholder="Powtórz hasło"
-              formControlName="repPass"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input
-              matInput
-              [matDatepicker]="myDatepicker"
-              placeholder="Data urodzenia"
-              formControlName="dateOfBirth"
-              required
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="myDatepicker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #myDatepicker></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div style="margin-bottom: 15px;">
-          <p style="margin-bottom: 5px;">Wybierz zdjęcie profilowe:</p>
-          <input
-            id="singleFileUploadInput"
-            (change)="upload($event)"
-            type="file"
-            name="file"
-            required
-          />
-        </div>
-        <div>
+              <mat-radio-button style="margin-right: 15px;" value="Kobieta"
+                >Kobieta</mat-radio-button
+              >
+              <mat-radio-button value="Mężczyzna">Mężczyzna</mat-radio-button>
+            </mat-radio-group>
+          </div>
           <div>
-            <mat-checkbox color="accent" formControlName="rulesCheck"
-              >Akceptuję regulamin</mat-checkbox
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                placeholder="Imię"
+                formControlName="firstName"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                placeholder="Nazwisko"
+                formControlName="lastName"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                placeholder="Nazwa użytkownika"
+                formControlName="username"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="email"
+                placeholder="E-mail"
+                formControlName="email"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="password"
+                placeholder="Hasło"
+                formControlName="pass"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="password"
+                placeholder="Powtórz hasło"
+                formControlName="repPass"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="myDatepicker"
+                placeholder="Data urodzenia"
+                formControlName="dateOfBirth"
+                required
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="myDatepicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <p style="margin-bottom: 5px;">Wybierz zdjęcie profilowe:</p>
+            <input
+              id="singleFileUploadInput"
+              (change)="upload($event)"
+              type="file"
+              name="file"
+              required
+            />
+          </div>
+          <div>
+            <div>
+              <mat-checkbox color="accent" formControlName="rulesCheck"
+                >Akceptuję regulamin</mat-checkbox
+              >
+            </div>
+            <div class="emailUsernameErr" *ngIf="emailUsernameErrShow">
+              Nazwa użytkownika lub adres email są już w użyciu.
+            </div>
+            <button mat-raised-button color="warn" mat-button type="reset">
+              Reset
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              class=" mx-2 my-2"
             >
+              Załóż konto
+            </button>
           </div>
-          <div class="emailUsernameErr" *ngIf="emailUsernameErrShow">
-            Nazwa użytkownika lub adres email są już w użyciu.
-          </div>
-          <button mat-raised-button color="warn" mat-button type="reset">
-            Reset
-          </button>
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            class=" mx-2 my-2"
-          >
-            Załóż konto
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-  <div class="col-10 mx-auto my-auto col-md-6 my-5 mx-5">
-    <div class="registrationImage ">
-      <img src="./../../assets/img/trainingImage.jpg" alt="image" />
+    <div class="col-6 mx-auto my-auto col-md-6 my-5 mx-5">
+      <div class="registrationImage ">
+        <img
+          src="./../../assets/img/trainingImage.jpg"
+          height="400px"
+          alt="image"
+        />
+      </div>
     </div>
   </div>
 </div>
